@@ -73,15 +73,16 @@ project-talos/
 
 ## 🤝 Contributing
 
-We welcome contributions!
+We welcome all contributions — code, design, docs, or ideas!
 
-1. Fork this repo and clone it
-2. Create a new branch (`git checkout -b feature-name`)
-3. Make your changes
-4. Format & lint your code
-5. Open a Pull Request
+Please read our [CONTRIBUTING.md](CONTRIBUTING.md) for detailed guidelines on:
 
-> You can also open issues to suggest features or report bugs.
+- Setting up the project locally
+- Commit message conventions
+- Formatting and linting
+- Pull request process
+
+> You can also open [issues](https://github.com/OpencodeNIT-R/project-talos/issues) to suggest features or report bugs.
 
 ---
 
