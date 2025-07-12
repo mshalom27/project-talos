@@ -1,16 +1,11 @@
-import React from "react";
-import SponsorsSection from "../src/pages/landing-page/sponsor";
-import TeamSlider from "../src/pages/landing-page/Team";
-import teamMembers from "../src/config/teammate";
-import TeamPage from "../src/pages/landing-page/TeamPage";
+import Button from "./components/shared/Button";
 
 function App() {
   return (
-    <>
-      <SponsorsSection />
-      <TeamSlider />
-      <TeamPage teamMembers={teamMembers} />
-    </>
+    <div className="text-white bg-black text-7xl flex flex-col gap-4 items-center justify-center h-screen">
+      ASME Website
+      <Button>Click Me!</Button>
+    </div>
   );
 }
 
