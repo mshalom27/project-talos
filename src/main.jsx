@@ -6,6 +6,7 @@ import App from "./App.jsx";
 import Playground from "./Playground.jsx";
 import Test from "./components/playground/Test.jsx";
 import Home from "./pages/playground/landing-page/Home.jsx";
+import GalarySection from "./components/playground/GalarySection.jsx";
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
@@ -15,6 +16,7 @@ createRoot(document.getElementById("root")).render(
         <Route path="playground" element={<Playground />}>
           <Route index element={<Home />} />
           <Route path="test" element={<Test />} />
+          <Route path="galary" element={<GalarySection />} />
         </Route>
       </Routes>
     </BrowserRouter>
