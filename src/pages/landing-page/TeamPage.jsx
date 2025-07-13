@@ -5,7 +5,6 @@ import container from "../../assets/Frame 142.png";
 const TeamPage = ({ teamMembers = [] }) => {
   return (
     <section className="bg-white text-black">
-      {/* Top Banner Image */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28">
         <img
           src={container}
@@ -14,7 +13,6 @@ const TeamPage = ({ teamMembers = [] }) => {
         />
       </div>
 
-      {/* Heading & Description */}
       <div className="text-center py-10 px-4 max-w-4xl mx-auto">
         <h2 className="text-3xl sm:text-4xl font-bold text-[#021640] mb-4">
           Meet Our Team
@@ -26,11 +24,9 @@ const TeamPage = ({ teamMembers = [] }) => {
         </p>
       </div>
 
-      {/* Team Members Grid */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
         {teamMembers.map((member, index) => (
           <div key={index} className="flex flex-col items-center text-center">
-            {/* Image box with border */}
             <div className="w-full max-w-xs border rounded-md overflow-hidden shadow">
               <img
                 src={
@@ -41,7 +37,6 @@ const TeamPage = ({ teamMembers = [] }) => {
               />
             </div>
 
-            {/* Text below image */}
             <div className="mt-4">
               <h3 className="font-bold">{member.name || "Full name"}</h3>
               <p className="text-sm text-gray-600">

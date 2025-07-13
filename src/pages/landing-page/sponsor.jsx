@@ -1,27 +1,38 @@
 import React, { useRef, useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import sponsors from "../../config/sponsors";
+import "./sponsor.css";
 
 const SponsorsSection = () => {
   const scrollRef = useRef(null);
   const [isHovered, setIsHovered] = useState(false);
   const pageIndex = useRef(0);
+  const [visibleCount, setVisibleCount] = useState(1);
+
+  useEffect(() => {
+    const handleResize = () => {
+      const width = window.innerWidth;
+      if (width < 640) setVisibleCount(1);
+      else if (width < 1024) setVisibleCount(2);
+      else setVisibleCount(3);
+    };
+
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
 
   const scrollToPage = (index) => {
     const container = scrollRef.current;
     if (!container) return;
 
-    const scrollX = container.offsetWidth * index;
+    const cardWidth = container.scrollWidth / sponsors.length;
+    const scrollX = cardWidth * visibleCount * index;
     container.scrollTo({ left: scrollX, behavior: "smooth" });
   };
 
   const totalPages = () => {
-    const container = scrollRef.current;
-    if (!container) return 0;
-
-    const fullWidth = container.scrollWidth;
-    const visibleWidth = container.offsetWidth;
-    return Math.ceil(fullWidth / visibleWidth);
+    return Math.ceil(sponsors.length / visibleCount);
   };
 
   const autoScroll = () => {
@@ -50,7 +61,7 @@ const SponsorsSection = () => {
       interval = setInterval(autoScroll, 3000);
     }
     return () => clearInterval(interval);
-  }, [isHovered]);
+  }, [isHovered, visibleCount]);
 
   return (
     <section className="bg-white py-10 relative overflow-hidden">
@@ -69,7 +80,7 @@ const SponsorsSection = () => {
         >
           <div
             ref={scrollRef}
-            className="flex space-x-4 overflow-x-auto scroll-smooth scrollbar-hide"
+            className="flex overflow-x-auto scroll-smooth hide-scrollbar"
           >
             {sponsors.map((sponsor, index) => (
               <a
@@ -77,28 +88,30 @@ const SponsorsSection = () => {
                 href={sponsor.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="min-w-[15rem] h-64 bg-white flex items-center justify-center rounded transition duration-300 transform hover:-translate-y-2 hover:shadow-xl cursor-pointer border"
+                className="flex-shrink-0 px-2 box-border"
+                style={{ width: `${100 / visibleCount}%` }}
               >
-                <img
-                  src={sponsor.image}
-                  alt={sponsor.name}
-                  className="object-contain h-32"
-                />
+                <div className="h-64 bg-white flex items-center justify-center rounded transition duration-300 transform hover:-translate-y-2 hover:shadow-xl cursor-pointer border-2">
+                  <img
+                    src={sponsor.image}
+                    alt={sponsor.name}
+                    className="object-contain h-32"
+                  />
+                </div>
               </a>
             ))}
           </div>
 
-          {/* Buttons below */}
           <div className="flex justify-center space-x-4 mt-6">
             <button
               onClick={() => handleManualScroll("left")}
-              className="p-2 border rounded-full bg-white shadow hover:bg-gray-100"
+              className="p-2 border-2 rounded-full bg-white shadow hover:bg-black-100"
             >
               <ArrowLeft />
             </button>
             <button
               onClick={() => handleManualScroll("right")}
-              className="p-2 border rounded-full bg-white shadow hover:bg-gray-100"
+              className="p-2 border-2 rounded-full bg-white shadow hover:bg-black-100"
             >
               <ArrowRight />
             </button>

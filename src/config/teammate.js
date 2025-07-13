@@ -58,7 +58,38 @@ const teamMembers = [
 
     linkedin: "https://linkedin.com/in/krishagarwal",
   },
-  // ...add more team members
+  {
+    name: "Krish Agarwal8",
+    title: "Frontend Developer",
+    img: Frame,
+    description: "Eat good live long",
+
+    linkedin: "https://linkedin.com/in/krishagarwal",
+  },
+  {
+    name: "Krish Agarwal8",
+    title: "Frontend Developer",
+    img: Frame,
+    description: "Eat good live long",
+
+    linkedin: "https://linkedin.com/in/krishagarwal",
+  },
+  {
+    name: "Krish Agarwal8",
+    title: "Frontend Developer",
+    img: Frame,
+    description: "Eat good live long",
+
+    linkedin: "https://linkedin.com/in/krishagarwal",
+  },
+  {
+    name: "Krish Agarwal8",
+    title: "Frontend Developer",
+    img: Frame,
+    description: "Eat good live long",
+
+    linkedin: "https://linkedin.com/in/krishagarwal",
+  },
 ];
 
 export default teamMembers;
