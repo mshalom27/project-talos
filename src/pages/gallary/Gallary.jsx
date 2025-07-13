@@ -1,8 +1,18 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import images from "../../config/galary";
+import heroImages from "../../config/galaryPage";
 
 export default function GallaryPage() {
   const [selectedYear, setSelectedYear] = useState("all");
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const years = ["all", ...new Set(images.map((image) => image.year))].sort();
 
@@ -17,13 +27,91 @@ export default function GallaryPage() {
 
   return (
     <div className="w-full">
-      {/* Hero Banner */}
+      {/* Hero Banner Carousel */}
       <div className="relative h-[280px] sm:h-[320px] md:h-[400px] lg:h-[480px] w-full overflow-hidden">
-        <img
-          src="https://res.cloudinary.com/dsjxx976j/image/upload/v1752425766/e8d1afdb4d097b5c14935394e296d28109b650e4_fominv.png"
-          alt="Gallery Hero Banner"
-          className="w-full h-full object-cover brightness-75"
-        />
+        {/* Carousel Slides */}
+        <div className="relative h-full w-full">
+          {heroImages.map((image, index) => (
+            <div
+              key={image.id}
+              className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
+                index === currentSlide ? "opacity-100 z-10" : "opacity-0 z-0"
+              }`}
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-full object-cover brightness-75"
+              />
+            </div>
+          ))}
+
+          {/* Carousel Controls */}
+          <div className="absolute bottom-4 left-0 right-0 z-30 flex justify-center gap-2">
+            {heroImages.map((_, index) => (
+              <button
+                key={index}
+                onClick={() => setCurrentSlide(index)}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  index === currentSlide ? "bg-white w-4" : "bg-white/50"
+                }`}
+                aria-label={`Go to slide ${index + 1}`}
+              />
+            ))}
+          </div>
+
+          {/* Next/Prev Buttons (optional) */}
+          {heroImages.length > 1 && (
+            <>
+              <button
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-black/30 hover:bg-black/50 text-white w-10 h-10 rounded-full flex items-center justify-center"
+                onClick={() =>
+                  setCurrentSlide((prev) =>
+                    prev === 0 ? heroImages.length - 1 : prev - 1,
+                  )
+                }
+                aria-label="Previous slide"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M15.75 19.5L8.25 12l7.5-7.5"
+                  />
+                </svg>
+              </button>
+              <button
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-black/30 hover:bg-black/50 text-white w-10 h-10 rounded-full flex items-center justify-center"
+                onClick={() =>
+                  setCurrentSlide((prev) => (prev + 1) % heroImages.length)
+                }
+                aria-label="Next slide"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  strokeWidth={2}
+                  stroke="currentColor"
+                  className="w-6 h-6"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    d="M8.25 4.5l7.5 7.5-7.5 7.5"
+                  />
+                </svg>
+              </button>
+            </>
+          )}
+        </div>
       </div>
 
       {/* Gallery Content */}
