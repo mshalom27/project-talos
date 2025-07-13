@@ -22,24 +22,22 @@ export default function Achievements() {
       </div>
 
       <div className="relative">
-        <div className="hidden lg:block absolute top-1/2 left-0 w-full h-1 bg-black -translate-y-1/2 z-0"></div>
-        <div className="lg:hidden absolute left-2 top-0 h-full w-1 bg-black z-0"></div>
+        <div className="hidden md:block absolute top-1/2 left-0 w-full h-1 bg-black -translate-y-1/2 z-0"></div>
+        <div className="md:hidden absolute left-2 top-0 h-full w-1 bg-black z-0"></div>
 
-        <div className="flex flex-col lg:flex-row  items-start lg:items-center justify-between relative z-10">
+        <div className="flex flex-col md:flex-row items-start md:items-center justify-between relative z-10">
           {achievementsData.map((item, index) => (
             <div
               key={index}
-              className={`w-full lg:w-1/4 px-4 mb-16 lg:mb-0 flex lg:flex-col items-start lg:items-center relative`}
+              className={`w-full md:w-1/4 px-4 mb-16 md:mb-0 flex md:flex-col items-start md:items-center relative`}
             >
-              {
-                <div className="absolute lg:static left-0 lg:left-auto top-2 lg:top-auto lg:mb-4 transform -translate-y-1/2 lg:translate-y-1/2 w-4.5 h-4.5 bg-black border-2 border-white rounded-full z-20"></div>
-              }
+              <div className="absolute md:static left-0 md:left-auto top-2 md:top-auto md:mb-4 transform -translate-y-1/2 md:translate-y-1/2 w-4.5 h-4.5 bg-black border-2 border-white rounded-full z-20"></div>
 
               <div
-                className={`bg-white p-4 rounded-md  w-full max-w-xs lg:mt-0 lg:absolute ${
+                className={`bg-white p-4 rounded-md w-full max-w-xs md:mt-0 md:absolute ${
                   index % 2 === 0
-                    ? "lg:top-1/2 lg:translate-y-6 self-start"
-                    : "lg:bottom-1/2 lg:-translate-y-6 self-end"
+                    ? "md:top-1/2 md:translate-y-6 self-start"
+                    : "md:bottom-1/2 md:-translate-y-6 self-end"
                 }`}
               >
                 <h3 className="font-bold text-lg text-black">{item.title}</h3>
