@@ -4,7 +4,7 @@ import images from "../../config/galary";
 export default function GalarySection() {
   const getRandomImages = () => {
     const shuffled = [...images].sort(() => 0.5 - Math.random());
-    return shuffled;
+    return shuffled.slice(0, 5);
   };
 
   const randomImages = getRandomImages();
@@ -21,23 +21,18 @@ export default function GalarySection() {
       </div>
 
       {/* Gallery Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-auto">
+      <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
         {randomImages.map((image) => (
           <div
             key={image.id}
-            className="group cursor-pointer overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 h-fit"
+            className="group cursor-pointer overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 break-inside-avoid"
           >
-            <div className="relative w-full h-auto">
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-300 block"
-                loading="lazy"
-                onLoad={(e) => {
-                  e.target.style.display = "block";
-                }}
-              />
-            </div>
+            <img
+              src={image.src}
+              alt={image.alt}
+              className="w-full object-cover group-hover:scale-105 transition-transform duration-300"
+              loading="lazy"
+            />
           </div>
         ))}
       </div>
