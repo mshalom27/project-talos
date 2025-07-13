@@ -44,7 +44,7 @@ const TeamSlider = () => {
   return (
     <section className="bg-[#00163A] text-white px-4 sm:px-6 py-16 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
-        <div className="mb-8">
+        <div className="mb-10">
           <h2 className="text-3xl font-bold mb-2">Our team</h2>
           <p className="text-lg text-gray-300">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
