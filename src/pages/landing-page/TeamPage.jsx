@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import container from "../../assets/Frame 142.png";
 
 const TeamPage = ({ teamMembers = [] }) => {
+  const [activeTeam, setActiveTeam] = useState("All");
+
+  const teams = ["All", "Team 1", "Team 2", "Team 3", "Team 4"];
+
+  const filteredMembers =
+    activeTeam === "All"
+      ? teamMembers
+      : teamMembers.filter((member) => member.team === activeTeam);
+
   return (
     <section className="bg-white text-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28">
@@ -17,15 +26,31 @@ const TeamPage = ({ teamMembers = [] }) => {
         <h2 className="text-3xl sm:text-4xl font-bold text-[#021640] mb-4">
           Meet Our Team
         </h2>
-        <p className="text-gray-700 text-lg ">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
-          varius enim in eros elementum tristique. Duis cursus, mi quis viverra
-          ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.
+        <p className="text-gray-700 text-lg">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit...
         </p>
       </div>
 
+      {/* Tabs */}
+      <div className="flex justify-center flex-wrap gap-4 mb-10">
+        {teams.map((team) => (
+          <button
+            key={team}
+            onClick={() => setActiveTeam(team)}
+            className={`px-4 py-2 rounded-full border text-lg font-medium transition ${
+              activeTeam === team
+                ? "bg-[#021640] text-white"
+                : "bg-white text-[#021640] border-gray-300"
+            }`}
+          >
+            {team}
+          </button>
+        ))}
+      </div>
+
+      {/* Team Cards */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-        {teamMembers.map((member, index) => (
+        {filteredMembers.map((member, index) => (
           <div key={index} className="flex flex-col items-center text-center">
             <div className="w-full max-w-xs border rounded-md overflow-hidden shadow">
               <img
