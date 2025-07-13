@@ -3,7 +3,7 @@ import { siteConfig } from "../../config/navbarHero";
 
 export default function HeroSection() {
   return (
-    <section className="bg-white min-h-[400px] px-4 sm:px-6 md:px-10 lg:px-16 py-12 sm:py-16">
+    <section className="bg-white min-h-[400px]  pt-[80px] sm:pt-[100px] md:pt-[120px] lg:pt-[130px] px-4 sm:px-6 md:px-10 lg:px-16 py-12 sm:py-16">
       <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row items-center md:items-start justify-center md:justify-between">
         <div className="w-full max-w-[700px] px-2 md:px-0 space-y-4 text-center md:text-left">
           <p
