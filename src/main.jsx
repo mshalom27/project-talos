@@ -16,10 +16,10 @@ createRoot(document.getElementById("root")).render(
         <Route path="/" element={<MainLayout />}>
           <Route index element={<App />}></Route>
           <Route path="events" element={<Events />} />
-            <Route path="playground" element={<Playground />}>
-                <Route index element={<Home />} />
-                <Route path="test" element={<Test />} />
-            </Route>
+          <Route path="playground" element={<Playground />}>
+            <Route index element={<Home />} />
+            <Route path="test" element={<Test />} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>
