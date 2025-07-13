@@ -8,7 +8,7 @@
     
     title = "ASME NIT Rourkela Chapter",
     description = "The American Society of Mechanical Engineers Student Chapter at NIT Rourkela, fostering a culture of innovation and technical learning through innovation, collaboration, and hands-on learning.",
-    links = ["Team", "Events", "Achievements", "Gallery"],
+    
     
     social = {
       facebook: "#",
