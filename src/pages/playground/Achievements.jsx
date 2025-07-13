@@ -1,4 +1,3 @@
-import React from "react";
 import { achievementsData } from "../../config/achievement";
 
 export default function Achievements() {
