@@ -2,6 +2,59 @@ import { useState, useEffect } from "react";
 import images from "../../config/galary";
 import heroImages from "../../config/galaryPage";
 
+const NavButton = ({ direction, onClick }) => {
+  const isNext = direction === "next";
+  return (
+    <button
+      className="absolute top-1/2 -translate-y-1/2 z-30 bg-black/30 hover:bg-black/50 text-white w-10 h-10 rounded-full flex items-center justify-center"
+      style={{ [isNext ? "right" : "left"]: "1rem" }}
+      onClick={onClick}
+      aria-label={`${isNext ? "Next" : "Previous"} slide`}
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        strokeWidth={2}
+        stroke="currentColor"
+        className="w-6 h-6"
+      >
+        <path
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          d={
+            isNext ? "M8.25 4.5l7.5 7.5-7.5 7.5" : "M15.75 19.5L8.25 12l7.5-7.5"
+          }
+        />
+      </svg>
+    </button>
+  );
+};
+
+const YearButton = ({ year, isSelected, onClick }) => (
+  <button
+    onClick={onClick}
+    className={`px-4 py-1 rounded-full text-sm md:text-base transition-all ${
+      isSelected
+        ? "bg-blue-600 text-white font-medium"
+        : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+    }`}
+  >
+    {year === "all" ? "All Years" : year}
+  </button>
+);
+
+const GalleryItem = ({ image }) => (
+  <div className="group cursor-pointer overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 break-inside-avoid mb-6">
+    <img
+      src={image.src}
+      alt={image.alt}
+      className="w-full object-cover group-hover:scale-105 transition-transform duration-300"
+      loading="lazy"
+    />
+  </div>
+);
+
 export default function GallaryPage() {
   const [selectedYear, setSelectedYear] = useState("all");
   const [currentSlide, setCurrentSlide] = useState(0);
@@ -10,20 +63,15 @@ export default function GallaryPage() {
     const interval = setInterval(() => {
       setCurrentSlide((prev) => (prev + 1) % heroImages.length);
     }, 5000);
-
     return () => clearInterval(interval);
   }, []);
 
   const years = ["all", ...new Set(images.map((image) => image.year))].sort();
 
-  const getFilteredImages = () => {
-    if (selectedYear === "all") {
-      return [...images];
-    }
-    return [...images].filter((image) => image.year === Number(selectedYear));
-  };
-
-  const galleryImages = getFilteredImages();
+  const galleryImages =
+    selectedYear === "all"
+      ? images
+      : images.filter((image) => image.year === Number(selectedYear));
 
   return (
     <div className="w-full">
@@ -52,63 +100,29 @@ export default function GallaryPage() {
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
-                className={`w-2 h-2 rounded-full transition-all ${
-                  index === currentSlide ? "bg-white w-4" : "bg-white/50"
-                }`}
+                className={`w-2 h-2 rounded-full transition-all ${index === currentSlide ? "bg-white w-4" : "bg-white/50"}`}
                 aria-label={`Go to slide ${index + 1}`}
               />
             ))}
           </div>
 
-          {/* Next/Prev Buttons (optional) */}
+          {/* Next/Prev Buttons */}
           {heroImages.length > 1 && (
             <>
-              <button
-                className="absolute left-4 top-1/2 -translate-y-1/2 z-30 bg-black/30 hover:bg-black/50 text-white w-10 h-10 rounded-full flex items-center justify-center"
+              <NavButton
+                direction="prev"
                 onClick={() =>
                   setCurrentSlide((prev) =>
                     prev === 0 ? heroImages.length - 1 : prev - 1,
                   )
                 }
-                aria-label="Previous slide"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M15.75 19.5L8.25 12l7.5-7.5"
-                  />
-                </svg>
-              </button>
-              <button
-                className="absolute right-4 top-1/2 -translate-y-1/2 z-30 bg-black/30 hover:bg-black/50 text-white w-10 h-10 rounded-full flex items-center justify-center"
+              />
+              <NavButton
+                direction="next"
                 onClick={() =>
                   setCurrentSlide((prev) => (prev + 1) % heroImages.length)
                 }
-                aria-label="Next slide"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  strokeWidth={2}
-                  stroke="currentColor"
-                  className="w-6 h-6"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M8.25 4.5l7.5 7.5-7.5 7.5"
-                  />
-                </svg>
-              </button>
+              />
             </>
           )}
         </div>
@@ -125,18 +139,12 @@ export default function GallaryPage() {
               </h2>
               <div className="flex flex-wrap gap-3 mt-4">
                 {years.map((year) => (
-                  <button
+                  <YearButton
                     key={year}
+                    year={year}
+                    isSelected={selectedYear === year}
                     onClick={() => setSelectedYear(year)}
-                    className={`px-4 py-1 rounded-full text-sm md:text-base transition-all 
-                      ${
-                        selectedYear === year
-                          ? "bg-blue-600 text-white font-medium"
-                          : "bg-gray-100 text-gray-700 hover:bg-gray-200"
-                      }`}
-                  >
-                    {year === "all" ? "All Years" : year}
-                  </button>
+                  />
                 ))}
               </div>
             </div>
@@ -152,17 +160,7 @@ export default function GallaryPage() {
         {/* Gallery Grid */}
         <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
           {galleryImages.map((image) => (
-            <div
-              key={image.id}
-              className="group cursor-pointer overflow-hidden rounded-lg shadow-md hover:shadow-xl transition-all duration-300 break-inside-avoid mb-6"
-            >
-              <img
-                src={image.src}
-                alt={image.alt}
-                className="w-full object-cover group-hover:scale-105 transition-transform duration-300"
-                loading="lazy"
-              />
-            </div>
+            <GalleryItem key={image.id} image={image} />
           ))}
         </div>
 
