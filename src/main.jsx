@@ -6,16 +6,16 @@ import App from "./App.jsx";
 import Playground from "./Playground.jsx";
 import Test from "./components/playground/Test.jsx";
 import Home from "./pages/playground/landing-page/Home.jsx";
-
+import Achievements from "./pages/playground/Achievements.jsx";
 createRoot(document.getElementById("root")).render(
   <StrictMode>
     <BrowserRouter>
       <Routes>
         <Route index element={<App />}></Route>
-        <Route path="playground" element={<Playground />}>
-          <Route index element={<Home />} />
-          <Route path="test" element={<Test />} />
-        </Route>
+        <Route path="playground" element={<Playground />} />
+        <Route index element={<Home />} />
+        <Route path="test" element={<Test />} />
+        <Route path="achievement" element={<Achievements />} />
       </Routes>
     </BrowserRouter>
   </StrictMode>,
