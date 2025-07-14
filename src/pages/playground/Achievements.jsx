@@ -1,6 +1,9 @@
-import { achievementsData } from "../../config/achievement";
+import { useNavigate } from "react-router";
+import achievementsData from "../../config/achievement";
 
 export default function Achievements() {
+  const navigate = useNavigate();
+
   return (
     <div className="px-4 md:px-12 py-8 max-w-screen-xl mx-auto">
       <div style={{ marginBottom: "12rem" }}>
@@ -15,7 +18,10 @@ export default function Achievements() {
           Their STEM outreach initiatives further enhance their impact,
           solidifying their reputation for excellence in mechanical engineering.
         </p>
-        <button className="bg-white text-blue-800 border border-blue-800 px-4 py-2 rounded hover:bg-blue-50 mb-12">
+        <button
+          className="bg-white text-blue-800 border border-blue-800 px-4 py-2 rounded hover:bg-blue-50 mb-12"
+          onClick={() => navigate("/achievementpage")}
+        >
           View All Achievements &gt;
         </button>
       </div>
