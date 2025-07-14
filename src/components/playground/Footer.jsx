@@ -77,27 +77,27 @@ const Footer = ({
           <h3 className="text-lg font-semibold">Quick Links</h3>
           <ul className="mt-2 space-y-1 text-sm">
             <li>
-              <Link to="/about" className="hover:underline">
+              <Link to="/playground/about" className="hover:underline">
                 About us
               </Link>
             </li>
             <li>
-              <Link to="/team" className="hover:underline">
+              <Link to="/playground/team" className="hover:underline">
                 Team
               </Link>
             </li>
             <li>
-              <Link to="/events" className="hover:underline">
+              <Link to="/playground/events" className="hover:underline">
                 Events
               </Link>
             </li>
             <li>
-              <Link to="/achievements" className="hover:underline">
+              <Link to="/playground/achievements" className="hover:underline">
                 Achievements
               </Link>
             </li>
             <li>
-              <Link to="/gallery" className="hover:underline">
+              <Link to="/playground/gallery" className="hover:underline">
                 Gallery
               </Link>
             </li>
@@ -110,11 +110,11 @@ const Footer = ({
           <div className="text-sm mt-4 text-white space-y-4">
             <div className="flex items-center gap-4">
               <FiMail className=" text-[#51B8F2] text-xl  hover:text-white transition" />
-              <span>contact@asmenitrkl.ac.in</span> {/* Optional */}
+              <span>contact@asmenitrkl.ac.in</span> {/* To be added */}
             </div>
             <div className="flex items-center gap-4">
               <FiPhone className="text-[#51B8F2] text-xl hover:text-white transition" />
-              <span>+91-1234567890</span> {/* Optional */}
+              <span>+91-1234567890</span> {/* To be added */}
             </div>
             <div className="flex items-start gap-4">
               <GoLocation className=" text-[#51B8F2] text-xl mt-1 hover:text-white transition" />
