@@ -7,6 +7,8 @@ import Footer from "./components/playground/Footer.jsx";
 import Playground from "./Playground.jsx";
 import Test from "./components/playground/Test.jsx";
 import Home from "./pages/playground/landing-page/Home.jsx";
+import GalarySection from "./components/playground/GalarySection.jsx";
+import GallaryPage from "./pages/gallary/Gallary.jsx";
 import Achievements from "./pages/playground/Achievements.jsx";
 import AchievementPage from "./pages/playground/AchievementPage.jsx";
 import Events from "./pages/playground/landing-page/Events.jsx";
@@ -19,6 +21,8 @@ createRoot(document.getElementById("root")).render(
         <Route path="playground" element={<Playground />}>
           <Route index element={<Home />} />
           <Route path="test" element={<Test />} />
+          <Route path="galary" element={<GalarySection />} />
+          <Route path="galaryPage" element={<GallaryPage />} />
           <Route path="events" element={<Events />} />
           <Route path="achievement" element={<Achievements />} />
           <Route path="achievementpage" element={<AchievementPage />} />
