@@ -1,7 +1,13 @@
+import Navbar from "./components/playground/Navbar.jsx";
 import { Outlet } from "react-router";
 
 const Playground = () => {
-  return <Outlet />;
+  return (
+    <>
+      <Navbar />
+      <Outlet />
+    </>
+  );
 };
 
 export default Playground;
