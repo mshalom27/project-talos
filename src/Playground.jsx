@@ -6,6 +6,7 @@ const Playground = () => {
     <>
       <Navbar />
       <Outlet />
+      <Footer />
     </>
   );
 };
