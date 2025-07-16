@@ -1,17 +1,15 @@
-import React from "react";
-import SponsorsSection from "../src/pages/landing-page/sponsor";
-import TeamSlider from "../src/pages/landing-page/Team";
-import teamMembers from "../src/config/teammate";
-import TeamPage from "../src/pages/landing-page/TeamPage";
+import Footer from "./components/Footer.jsx";
+import Navbar from "./components/Navbar.jsx";
+import { Outlet } from "react-router";
 
-function App() {
+const App = () => {
   return (
     <>
-      <SponsorsSection />
-      <TeamSlider />
-      <TeamPage teamMembers={teamMembers} />
+      <Navbar />
+      <Outlet />
+      <Footer />
     </>
   );
-}
+};
 
 export default App;

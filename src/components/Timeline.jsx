@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import AchievementCard from "./achievementCard";
-import achievementsData from "./achievement";
+import AchievementCard from "./AchievementCard";
+import achievementsData from "../config/achievement";
 
 const Timeline = () => {
   const timelineRef = useRef(null);

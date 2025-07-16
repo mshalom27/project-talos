@@ -1,14 +1,12 @@
-// src/components/Footer.jsx
 import { Link } from "react-router-dom";
-import React from "react";
 import {
   FaFacebookF,
   FaTwitter,
   FaInstagram,
   FaLinkedinIn,
 } from "react-icons/fa";
-import { FiMail, FiPhone } from "react-icons/fi"; // Feather Icons
-import { GoLocation } from "react-icons/go"; //location icons
+import { FiMail, FiPhone } from "react-icons/fi";
+import { GoLocation } from "react-icons/go";
 const Footer = ({
   title = "ASME NIT Rourkela Chapter",
   description = "The American Society of Mechanical Engineers Student Chapter at NIT Rourkela, fostering a culture of innovation and technical learning through innovation, collaboration, and hands-on learning.",

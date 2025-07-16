@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from "react";
-import teamMembers from "../../config/teammate";
+import { useState, useEffect } from "react";
+import teamMembers from "../config/teammate";
 import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
 
 const TeamSlider = () => {

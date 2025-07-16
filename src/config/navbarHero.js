@@ -2,7 +2,7 @@ export const siteConfig = {
   navigation: {
     logo: "https://res.cloudinary.com/dwjcki9ey/image/upload/v1752133616/Group2_e25wne.png",
     links: [
-      { name: "About us", href: "/about" },
+      { name: "Home", href: "/" },
       { name: "Team", href: "/team" },
       { name: "Events", href: "/events" },
       { name: "Achievements", href: "/achievements" },

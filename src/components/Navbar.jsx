@@ -1,5 +1,5 @@
-import { siteConfig } from "../../config/navbarHero";
-import Button from "../shared/Button";
+import { siteConfig } from "../config/navbarHero";
+import Button from "./shared/Button";
 import { useState } from "react";
 
 export default function Navbar() {

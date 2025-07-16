@@ -1,6 +1,6 @@
-import React, { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState } from "react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
-import sponsors from "../../config/sponsors";
+import sponsors from "../config/sponsors";
 import "./sponsor.css";
 
 const SponsorsSection = () => {
@@ -91,7 +91,7 @@ const SponsorsSection = () => {
                 className="flex-shrink-0 px-2 box-border"
                 style={{ width: `${100 / visibleCount}%` }}
               >
-                <div className="h-64 bg-white flex items-center justify-center rounded transition duration-300 transform hover:-translate-y-2 hover:shadow-xl cursor-pointer border-2">
+                <div className="h-64 bg-white flex items-center justify-center rounded transition duration-300 transform hover:shadow-xl cursor-pointer border-2">
                   <img
                     src={sponsor.image}
                     alt={sponsor.name}

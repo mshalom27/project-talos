@@ -1,4 +1,4 @@
-import Timeline from "../../config/timeline";
+import Timeline from "../../components/Timeline";
 
 const AchievementPage = () => {
   return (

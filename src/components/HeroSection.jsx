@@ -1,5 +1,5 @@
-import Button from "../shared/Button";
-import { siteConfig } from "../../config/navbarHero";
+import Button from "./shared/Button";
+import { siteConfig } from "../config/navbarHero";
 
 export default function HeroSection() {
   return (

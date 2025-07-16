@@ -1,5 +1,5 @@
 import MissionCard from "./MissionCard";
-import { siteConfig } from "../../config/navbarHero";
+import { siteConfig } from "../config/navbarHero";
 
 export default function MissionSection() {
   return (

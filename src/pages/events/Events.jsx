@@ -1,5 +1,5 @@
 import { useState } from "react";
-import EventCard from "../../../components/playground/EventCard";
+import EventCard from "../../components/EventCard";
 
 const Events = () => {
   const [filter, setFilter] = useState("all");
@@ -52,7 +52,7 @@ const Events = () => {
       <img
         src="https://res.cloudinary.com/dswk9scro/image/upload/v1752312233/image_1_nydvj8.png"
         alt="events"
-        className="mx-auto w-full max-w-xl rounded-xl shadow-md object-cover"
+        className="mx-auto my-12 w-full max-w-xl rounded-xl shadow-md object-cover"
       />
       <div className="text-center">
         <h2 className="text-3xl font-bold text-[#0B2044]">

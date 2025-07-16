@@ -1,5 +1,5 @@
-import TButton from "../shared/TertiaryButton";
-import images from "../../config/galary";
+import TButton from "./shared/TertiaryButton";
+import images from "../config/galary";
 
 export default function GalarySection() {
   const getRandomImages = () => {
