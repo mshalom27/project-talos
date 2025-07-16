@@ -1,12 +1,14 @@
+import Navbar from "./components/playground/Navbar.jsx";
 import { Outlet } from "react-router";
-import Footer from "./components/playground/Footer";
-const Playground = () => (
-  <>
-    <div className="min-h-screen">
+
+const Playground = () => {
+  return (
+    <>
+      <Navbar />
       <Outlet />
-    </div>
-    <Footer />
-  </>
-);
+      <Footer />
+    </>
+  );
+};
 
 export default Playground;
