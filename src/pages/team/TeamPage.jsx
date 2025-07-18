@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
 import teamMembers from "../../config/teammate";
-import container from "../../assets/Frame 142.png";
 
 const TeamPage = () => {
   const [activeTeam, setActiveTeam] = useState("All");

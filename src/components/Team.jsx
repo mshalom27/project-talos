@@ -39,9 +39,6 @@ const TeamSlider = () => {
     setCurrentIndex((prev) => Math.max(prev - visibleCount, 0));
   };
 
-  const pageCount = Math.ceil(teamMembers.length / visibleCount);
-  const activeDot = Math.round(currentIndex / visibleCount);
-
   return (
     <section className="bg-[#00163A] text-white px-4 sm:px-6 py-16 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">

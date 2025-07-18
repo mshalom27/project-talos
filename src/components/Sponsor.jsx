@@ -35,15 +35,6 @@ const SponsorsSection = () => {
     return Math.ceil(sponsors.length / visibleCount);
   };
 
-  const autoScroll = () => {
-    const container = scrollRef.current;
-    if (!container) return;
-
-    const pages = totalPages();
-    pageIndex.current = (pageIndex.current + 1) % pages;
-    scrollToPage(pageIndex.current);
-  };
-
   const handleManualScroll = (direction) => {
     const pages = totalPages();
     if (direction === "left") {
@@ -56,9 +47,18 @@ const SponsorsSection = () => {
   };
 
   useEffect(() => {
+    const autoScroll = () => {
+      const container = scrollRef.current;
+      if (!container) return;
+
+      const pages = totalPages();
+      pageIndex.current = (pageIndex.current + 1) % pages;
+      scrollToPage(pageIndex.current);
+    };
+
     let interval;
     if (!isHovered) {
-      interval = setInterval(autoScroll, 3000);
+      interval = setInterval(autoScroll, 5000);
     }
     return () => clearInterval(interval);
   }, [isHovered, visibleCount]);
