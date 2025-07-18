@@ -5,3 +5,28 @@
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+.carousel-arrow-btn {
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #112051 60%, #c7d2fe 100%);
+  box-shadow: 0 2px 8px rgba(30, 64, 175, 0.15);
+  color: #fff;
+  cursor: pointer;
+  transition:
+    transform 0.2s,
+    box-shadow 0.2s,
+    background 0.2s;
+  font-size: 1.5rem;
+  margin-right: -5px;
+}
+
+.carousel-arrow-btn:hover {
+  transform: scale(1.1);
+  background: linear-gradient(135deg, #2563eb 80%, #a5b4fc 100%);
+  box-shadow: 0 4px 16px rgba(30, 64, 175, 0.25);
+}

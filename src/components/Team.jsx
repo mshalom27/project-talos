@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import teamMembers from "../config/teammate";
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
 
 const TeamSlider = () => {
@@ -45,16 +46,32 @@ const TeamSlider = () => {
     <section className="bg-[#00163A] text-white px-4 sm:px-6 py-16 relative overflow-hidden">
       <div className="max-w-7xl mx-auto">
         <div className="mb-10">
-          <h2 className="text-3xl font-bold mb-2">Our team</h2>
-          <p className="text-lg text-gray-300">
+          <h2 className="text-3xl font-bold mb-2 ml-3">Our team</h2>
+          <p className="text-xl text-gray-300 ml-3">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
-          <button className="mt-4 border border-white text-white py-2 px-4 rounded hover:bg-white hover:text-[#00163A] transition">
+          <button className="mt-4 border border-white text-white py-2 px-4 ml-3 rounded hover:bg-white hover:text-[#00163A] transition cursor-pointer">
             View all team members
           </button>
         </div>
 
         <div className="relative">
+          <button
+            onClick={prevSlide}
+            className="absolute left-2 top-1/3 -translate-y-1/2 z-10 p-2 border-2 rounded-full bg-white border-gray-300 shadow-lg hover:bg-gray-100 flex items-center justify-center cursor-pointer"
+            aria-label="Previous"
+          >
+            <ArrowLeft size={24} color="#00163A" />
+          </button>
+
+          <button
+            onClick={nextSlide}
+            className="absolute right-2 top-1/3 -translate-y-1/2 z-10 p-2 border-2 rounded-full bg-white border-gray-300 shadow-lg hover:bg-gray-100 flex items-center justify-center cursor-pointer"
+            aria-label="Next"
+          >
+            <ArrowRight size={24} color="#00163A" />
+          </button>
+
           <div className="overflow-hidden">
             <div
               className="flex transition-transform duration-700 ease-in-out"
@@ -103,40 +120,14 @@ const TeamSlider = () => {
               ))}
             </div>
           </div>
-
-          <div className="absolute -bottom-12 right-4 flex items-center gap-3 z-10">
-            <button
-              onClick={prevSlide}
-              className="bg-white text-[#00163A] w-10 h-10 rounded-full flex items-center justify-center text-xl font-bold"
-            >
-              {"<"}
-            </button>
-            <button
-              onClick={nextSlide}
-              className="bg-white text-[#00163A] w-10 h-10 rounded-full flex items-center justify-center text-xl font-bold"
-            >
-              {">"}
-            </button>
-          </div>
-
-          <div className="absolute -bottom-6 left-2 gap-2 hidden sm:flex">
-            {Array.from({ length: pageCount }).map((_, idx) => (
-              <span
-                key={idx}
-                className={`w-2 h-2 rounded-full ${
-                  idx === activeDot ? "bg-white" : "bg-gray-500"
-                }`}
-              ></span>
-            ))}
-          </div>
         </div>
 
-        <div className="mt-24">
-          <h3 className="text-xl font-bold mb-1">Join Us Today!</h3>
-          <p className="text-base text-gray-300 mb-3">
+        <div className="mt-16">
+          <h3 className="text-xl font-bold mb-1 ml-3">Join Us Today!</h3>
+          <p className="text-base text-gray-300 mb-3 ml-3">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit.
           </p>
-          <button className="border border-white text-white py-2 px-4 rounded hover:bg-white hover:text-[#00163A] transition">
+          <button className="border border-white text-white py-2 px-4 ml-3 rounded hover:bg-white hover:text-[#00163A] transition cursor-pointer">
             Apply here
           </button>
         </div>

@@ -65,13 +65,15 @@ const SponsorsSection = () => {
 
   return (
     <section className="bg-white py-10 relative overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
-          Our Sponsors and Partners
-        </h2>
-        <p className="text-gray-700 text-lg mb-8">
-          We are proudly supported by our amazing sponsors and partners.
-        </p>
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:pl-0">
+        <div>
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-4">
+            Our Sponsors and Partners
+          </h2>
+          <p className="text-gray-700 text-lg mb-8">
+            We are proudly supported by our amazing sponsors and partners.
+          </p>
+        </div>
 
         <div
           className="relative overflow-hidden"
@@ -105,13 +107,13 @@ const SponsorsSection = () => {
           <div className="flex justify-center space-x-4 mt-6">
             <button
               onClick={() => handleManualScroll("left")}
-              className="p-2 border-2 rounded-full bg-white shadow hover:bg-black-100"
+              className="carousel-arrow-btn absolute left-2 top-1/2 -translate-y-1/2 z-10"
             >
               <ArrowLeft />
             </button>
             <button
               onClick={() => handleManualScroll("right")}
-              className="p-2 border-2 rounded-full bg-white shadow hover:bg-black-100"
+              className="carousel-arrow-btn absolute right-2 top-1/2 -translate-y-1/2 z-10"
             >
               <ArrowRight />
             </button>
