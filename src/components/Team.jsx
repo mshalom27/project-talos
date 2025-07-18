@@ -58,18 +58,18 @@ const TeamSlider = () => {
         <div className="relative">
           <button
             onClick={prevSlide}
-            className="absolute left-2 top-1/3 -translate-y-1/2 z-10 p-2 border-2 rounded-full bg-white border-gray-300 shadow-lg hover:bg-gray-100 flex items-center justify-center cursor-pointer"
+            className="absolute left-0 top-1/3 -translate-y-1/2 -translate-x-3 z-10 p-1.5 sm:p-2 border-2 rounded-full bg-white border-gray-300 shadow-lg hover:bg-gray-100 flex items-center justify-center cursor-pointer"
             aria-label="Previous"
           >
-            <ArrowLeft size={24} color="#00163A" />
+            <ArrowLeft className="w-6 h-6" color="#00163A" />
           </button>
 
           <button
             onClick={nextSlide}
-            className="absolute right-2 top-1/3 -translate-y-1/2 z-10 p-2 border-2 rounded-full bg-white border-gray-300 shadow-lg hover:bg-gray-100 flex items-center justify-center cursor-pointer"
+            className="absolute right-0 top-1/3 -translate-y-1/2 translate-x-3 z-10 p-1.5 sm:p-2 border-2 rounded-full bg-white border-gray-300 shadow-lg hover:bg-gray-100 flex items-center justify-center cursor-pointer"
             aria-label="Next"
           >
-            <ArrowRight size={24} color="#00163A" />
+            <ArrowRight className=" w-5 h-5 sm:w-6 sm:h-6" color="#00163A" />
           </button>
 
           <div className="overflow-hidden">
@@ -88,7 +88,7 @@ const TeamSlider = () => {
                     <img
                       src={member.img}
                       alt={member.name}
-                      className="w-full h-68 object-cover rounded-md"
+                      className="w-full h-68 object-cover rounded-lg"
                     />
                     <div className="mt-3 px-2">
                       <p className="font-semibold text-white">{member.name}</p>
