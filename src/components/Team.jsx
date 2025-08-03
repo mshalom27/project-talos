@@ -43,9 +43,7 @@ const TeamSlider = () => {
       <div className="max-w-7xl mx-auto">
         <div className="mb-10">
           <h2 className="text-3xl font-bold mb-2 ml-3">Our team</h2>
-          <p className="text-xl text-gray-300 ml-3">
-            
-          </p>
+          <p className="text-xl text-gray-300 ml-3"></p>
           <button className="mt-4 border border-white text-white py-2 px-4 ml-3 rounded hover:bg-white hover:text-[#00163A] transition cursor-pointer">
             View all team members
           </button>
@@ -75,22 +73,28 @@ const TeamSlider = () => {
                 transform: `translateX(-${currentIndex * (100 / visibleCount)}%)`,
               }}
             >
-              {Array.from(new Map(teamMembers.map((m) => [m.name, m])).values()).map((member, index) => (
-             <div
-                key={index}
-                className="flex-shrink-0 px-2 box-border"
-                style={{ width: `${100 / visibleCount}%` }}>
-
+              {Array.from(
+                new Map(teamMembers.map((m) => [m.name, m])).values(),
+              ).map((member, index) => (
+                <div
+                  key={index}
+                  className="flex-shrink-0 px-2 box-border"
+                  style={{ width: `${100 / visibleCount}%` }}
+                >
                   <div className="bg-[#00163A] rounded-lg">
                     <img
                       src={member.img}
                       alt={member.name}
-                       className="w-full aspect-[5/6] object-top object-cover rounded-lg"
+                      className="w-full aspect-[5/6] object-top object-cover rounded-lg"
                     />
                     <div className="mt-3 px-2">
-                      <p className="font-semibold text-white mb-1 text-lg">{member.name}</p>
-                      <p className="text-base text-gray-300 mb-1">{member.title}</p>
-                       <p className="text-base text-gray-300">{member.team}</p>
+                      <p className="font-semibold text-white mb-1 text-lg">
+                        {member.name}
+                      </p>
+                      <p className="text-base text-gray-300 mb-1">
+                        {member.title}
+                      </p>
+                      <p className="text-base text-gray-300">{member.team}</p>
                       <p className="text-sm text-gray-400 mt-2">
                         {member.description}
                       </p>
