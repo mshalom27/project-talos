@@ -4,68 +4,84 @@ import sponsors from "../config/sponsors";
 import "./sponsor.css";
 
 const SponsorsSection = () => {
-  const scrollRef = useRef(null);
-  const [isHovered, setIsHovered] = useState(false);
-  const pageIndex = useRef(0);
-  const [visibleCount, setVisibleCount] = useState(1);
+  const containerRef = useRef(null);
+  const [isPaused, setIsPaused] = useState(false);
+  const currentIndex = useRef(0);
+  const [itemsToShow, setItemsToShow] = useState(1);
 
   useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      if (width < 640) setVisibleCount(1);
-      else if (width < 1024) setVisibleCount(2);
-      else setVisibleCount(3);
+    const updateItemsToShow = () => {
+      if (window.innerWidth >= 1024) {
+        setItemsToShow(3);
+      } else if (window.innerWidth >= 640) {
+        setItemsToShow(2);
+      } else {
+        setItemsToShow(1);
+      }
     };
 
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
+    updateItemsToShow();
+    window.addEventListener("resize", updateItemsToShow);
+    return () => window.removeEventListener("resize", updateItemsToShow);
   }, []);
 
-  const scrollToPage = (index) => {
-    const container = scrollRef.current;
-    if (!container) return;
+  const scrollToIndex = (index) => {
+    if (!containerRef.current) return;
 
-    const cardWidth = container.scrollWidth / sponsors.length;
-    const scrollX = cardWidth * visibleCount * index;
-    container.scrollTo({ left: scrollX, behavior: "smooth" });
+    const itemWidth = containerRef.current.scrollWidth / sponsors.length;
+    const scrollPosition = itemWidth * itemsToShow * index;
+
+    containerRef.current.scrollTo({
+      left: scrollPosition,
+      behavior: "smooth",
+    });
   };
 
-  const totalPages = () => {
-    return Math.ceil(sponsors.length / visibleCount);
+  const getTotalPages = () => {
+    return Math.ceil(sponsors.length / itemsToShow);
   };
 
-  const handleManualScroll = (direction) => {
-    const pages = totalPages();
-    if (direction === "left") {
-      pageIndex.current =
-        pageIndex.current === 0 ? pages - 1 : pageIndex.current - 1;
-    } else {
-      pageIndex.current = (pageIndex.current + 1) % pages;
-    }
-    scrollToPage(pageIndex.current);
+  const goToNext = () => {
+    const totalPages = getTotalPages();
+    currentIndex.current = (currentIndex.current + 1) % totalPages;
+    scrollToIndex(currentIndex.current);
+  };
+
+  const goToPrevious = () => {
+    const totalPages = getTotalPages();
+    currentIndex.current =
+      currentIndex.current === 0 ? totalPages - 1 : currentIndex.current - 1;
+    scrollToIndex(currentIndex.current);
   };
 
   useEffect(() => {
-    const autoScroll = () => {
-      const container = scrollRef.current;
-      if (!container) return;
+    if (isPaused) return;
 
-      const pages = totalPages();
-      pageIndex.current = (pageIndex.current + 1) % pages;
-      scrollToPage(pageIndex.current);
-    };
+    const autoPlay = setInterval(() => {
+      goToNext();
+    }, 5000);
 
-    let interval;
-    if (!isHovered) {
-      interval = setInterval(autoScroll, 5000);
-    }
-    return () => clearInterval(interval);
-  }, [isHovered, visibleCount]);
+    return () => clearInterval(autoPlay);
+  }, [isPaused, itemsToShow]);
+
+  const handleMouseEnter = () => setIsPaused(true);
+  const handleMouseLeave = () => setIsPaused(false);
+
+  const handlePrevClick = () => {
+    goToPrevious();
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 200);
+  };
+
+  const handleNextClick = () => {
+    goToNext();
+    setIsPaused(true);
+    setTimeout(() => setIsPaused(false), 200);
+  };
 
   return (
-    <section className="bg-white py-10 relative overflow-hidden">
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:pl-0">
+    <section className="bg-white py-10">
+      <div className="max-w-6xl mx-auto px-4 sm:px-6">
         <div className="mb-8">
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-2">
             Our Sponsors and Partners
@@ -76,22 +92,21 @@ const SponsorsSection = () => {
         </div>
 
         <div
-          className="relative"
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
+          className="relative px-12"
+          onMouseEnter={handleMouseEnter}
+          onMouseLeave={handleMouseLeave}
         >
-          {/* Left Arrow */}
           <button
-            onClick={() => handleManualScroll("left")}
-            className="absolute left-0 sm:left-0 top-1/2 -translate-y-1/2 sm:-translate-x-3 bg-[#00163A] rounded-full p-2 sm:p-2.5 shadow z-10 cursor-pointer hover:bg-[#2563eb]"
+            onClick={handlePrevClick}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-[#00163A] hover:bg-[#2563eb] rounded-full p-2 shadow cursor-pointer"
           >
-            <ArrowLeft className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+            <ArrowLeft className="w-6 h-6 text-white" />
           </button>
 
-          {/* Sponsor Scroll Area */}
           <div
-            ref={scrollRef}
-            className="flex overflow-x-auto scroll-smooth hide-scrollbar"
+            ref={containerRef}
+            className="flex overflow-x-auto scroll-smooth"
+            style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
           >
             {sponsors.map((sponsor, index) => (
               <a
@@ -99,14 +114,14 @@ const SponsorsSection = () => {
                 href={sponsor.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-shrink-0 px-2 box-border"
-                style={{ width: `${100 / visibleCount}%` }}
+                className="flex-shrink-0 px-2"
+                style={{ width: `${100 / itemsToShow}%` }}
               >
-                <div className="h-64 bg-white flex items-center justify-center rounded-xl transition duration-300 transform hover:shadow-xl cursor-pointer border-2">
+                <div className="h-64 bg-white flex items-center justify-center rounded-xl hover:shadow-xl transition duration-300 border-2 cursor-pointer">
                   <img
                     src={sponsor.image}
                     alt={sponsor.name}
-                    className="object-contain h-32 "
+                    className="object-contain h-32"
                   />
                 </div>
               </a>
@@ -114,10 +129,10 @@ const SponsorsSection = () => {
           </div>
 
           <button
-            onClick={() => handleManualScroll("right")}
-            className="absolute right-0 sm:right-0 top-1/2 -translate-y-1/2 sm:translate-x-3 bg-[#00163A] cursor-pointer rounded-full p-2 sm:p-2.5 shadow z-10 hover:bg-[#2563eb]"
+            onClick={handleNextClick}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-[#00163A] hover:bg-[#2563eb] rounded-full p-2 shadow cursor-pointer"
           >
-            <ArrowRight className="w-5 h-5 sm:w-6 sm:h-6 text-white" />
+            <ArrowRight className="w-6 h-6 text-white" />
           </button>
         </div>
       </div>
