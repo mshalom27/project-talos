@@ -19,8 +19,8 @@ export default function Achievements() {
           solidifying their reputation for excellence in mechanical engineering.
         </p>
         <button
-          className="bg-white text-blue-800 border border-blue-800 px-4 py-2 rounded hover:bg-blue-50 md:mb-12"
-          onClick={() => navigate("/achievementpage")}
+          className="bg-[rgba(6,25,70,1)] text-white border-blue-800 px-4 py-2 rounded hover:bg-blue-50 md:mb-12  hover:text-black"
+          onClick={() => navigate("/achievements")}
         >
           View All Achievements &gt;
         </button>

@@ -34,12 +34,15 @@ export default function HeroSection() {
             >
               {siteConfig.hero.primaryButton}
             </Button>
-            <Button
-              className="bg-transparent text-[rgba(55,115,236,1)] underline-offset-4 transition duration-300 ease-in-out hover:bg-[rgba(55,115,236,1)] hover:text-white "
+            <a
+              href="#about"
+              role="button"
+              tabIndex={0}
+              className=" h-12 justify-center items-center flex bg-gradient-to-r from-blue-900 to-blue-950 text-[#e2cede] underline-offset-4 transition duration-300 ease-in-out hover:bg-none hover:bg-white hover:text-[#061946] font-semibold py-2 px-4 rounded"
               style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
             >
               {siteConfig.hero.secondaryLink}
-            </Button>
+            </a>
           </div>
         </div>
 
