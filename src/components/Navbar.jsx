@@ -75,79 +75,78 @@ export default function Navbar() {
             stroke="currentColor"
             viewBox="0 0 24 24"
           >
-            {mobileMenuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            ) : (
+            {!mobileMenuOpen ? (
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"
                 strokeWidth={2}
                 d="M4 6h16M4 12h16M4 18h16"
               />
-            )}
+            ) : null}
           </svg>
         </button>
       </div>
 
-      {mobileMenuOpen && (
-        <div className="min-[1100px]:hidden fixed inset-0 bg-[#173477ec] px-6 py-6 z-40 overflow-auto text-white">
-          <button
-            className="absolute top-6 right-6 text-white"
-            onClick={() => setMobileMenuOpen(false)}
-            aria-label="Close menu"
+      <div
+        className={`min-[1100px]:hidden fixed inset-0 px-6 py-6 z-40 overflow-auto text-white bg-[#173477ec] transition-all duration-500 ease-in-out
+          ${
+            mobileMenuOpen
+              ? "opacity-100 translate-y-0 pointer-events-auto"
+              : "opacity-0 -translate-y-8 pointer-events-none"
+          }`}
+        style={{ willChange: "opacity, transform" }}
+      >
+        <button
+          className="absolute top-6 right-6 text-white"
+          onClick={() => setMobileMenuOpen(false)}
+          aria-label="Close menu"
+        >
+          <svg
+            className="w-8 h-8"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
           >
-            <svg
-              className="w-8 h-8"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M6 18L18 6M6 6l12 12"
-              />
-            </svg>
-          </button>
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M6 18L18 6M6 6l12 12"
+            />
+          </svg>
+        </button>
 
-          <nav className="mt-14 flex flex-col w-full">
-            {siteConfig.navigation.links.map((item) => (
-              <a
-                key={item.name}
-                href={item.href}
-                className="w-full py-4 text-lg font-semibold text-center text-white hover:text-blue-300 transition-colors"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                {item.name}
-              </a>
-            ))}
-          </nav>
-
-          <div className="mt-8 flex flex-col space-y-4 pt-6 w-full">
-            <Button
-              backgroundColor="transparent"
-              textColor="white"
-              className="w-full border border-white px-4 py-3 text-center text-base transition duration-300 hover:bg-white hover:text-[rgba(6,25,70,1)]"
+        <nav className="mt-14 flex flex-col w-full">
+          {siteConfig.navigation.links.map((item) => (
+            <a
+              key={item.name}
+              href={item.href}
+              className="w-full py-4 text-lg font-semibold text-center text-white hover:text-blue-300 transition-colors"
+              onClick={() => setMobileMenuOpen(false)}
             >
-              Join Us
-            </Button>
+              {item.name}
+            </a>
+          ))}
+        </nav>
 
-            <Button
-              backgroundColor="white"
-              textColor="rgba(6,25,70,1)"
-              className="w-full px-4 py-3 text-center text-base transition duration-300 hover:bg-blue-100"
-            >
-              Contact Us
-            </Button>
-          </div>
+        <div className="mt-8 flex flex-col space-y-4 pt-6 w-full">
+          <Button
+            backgroundColor="transparent"
+            textColor="white"
+            className="w-full border border-white px-4 py-3 text-center text-base transition duration-300 hover:bg-white hover:text-[rgba(6,25,70,1)]"
+          >
+            Join Us
+          </Button>
+
+          <Button
+            backgroundColor="white"
+            textColor="rgba(6,25,70,1)"
+            className="w-full px-4 py-3 text-center text-base transition duration-300 hover:bg-blue-100"
+          >
+            Contact Us
+          </Button>
         </div>
-      )}
+      </div>
     </header>
   );
 }
