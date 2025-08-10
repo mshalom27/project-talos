@@ -12,10 +12,8 @@ const Footer = ({
   description = "The American Society of Mechanical Engineers Student Chapter at NIT Rourkela, fostering a culture of innovation and technical learning through innovation, collaboration, and hands-on learning.",
 
   social = {
-    facebook: "#",
-    twitter: "#",
-    instagram: "#",
-    linkedin: "#",
+    instagram: "https://www.instagram.com/asme.nitrkl/",
+    linkedin: "https://www.linkedin.com/company/asme-nit-rourkela",
   },
   year = new Date().getFullYear(),
 }) => {
@@ -35,22 +33,6 @@ const Footer = ({
 
           <p className="text-sm">{description}</p>
           <div className="flex gap-4 mt-4 text-lg">
-            <a
-              href={social.facebook}
-              aria-label="Facebook"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaFacebookF className="hover:text-gray-300 transition" />
-            </a>
-            <a
-              href={social.twitter}
-              aria-label="Twitter"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <FaTwitter className="hover:text-gray-300 transition" />
-            </a>
             <a
               href={social.instagram}
               aria-label="Instagram"
@@ -72,13 +54,8 @@ const Footer = ({
 
         {/* Middle Section */}
         <div>
-          <h3 className="text-lg font-semibold">Quick Links</h3>
+          <h3 className="text-xl font-semibold">Quick Links</h3>
           <ul className="mt-2 space-y-1 text-sm">
-            <li>
-              <Link to="/about" className="hover:underline">
-                About us
-              </Link>
-            </li>
             <li>
               <Link to="/team" className="hover:underline">
                 Team
@@ -104,15 +81,15 @@ const Footer = ({
 
         {/* Right Section */}
         <div>
-          <h3 className="text-lg font-semibold">Contact Info</h3>
+          <h3 className="text-xl font-semibold">Contact Info</h3>
           <div className="text-sm mt-4 text-white space-y-4">
             <div className="flex items-center gap-4">
               <FiMail className=" text-[#51B8F2] text-xl  hover:text-white transition" />
-              <span>contact@asmenitrkl.ac.in</span> {/* To be added */}
+              <span>asme.nitrkl@gmail.com</span>
             </div>
             <div className="flex items-center gap-4">
               <FiPhone className="text-[#51B8F2] text-xl hover:text-white transition" />
-              <span>+91-1234567890</span> {/* To be added */}
+              <span>+91-1234567890</span>
             </div>
             <div className="flex items-start gap-4">
               <GoLocation className=" text-[#51B8F2] text-xl mt-1 hover:text-white transition" />
