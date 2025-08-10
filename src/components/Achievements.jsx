@@ -1,11 +1,11 @@
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import achievementsData from "../config/achievement";
 
 export default function Achievements() {
   const navigate = useNavigate();
 
   return (
-    <div className="px-4 md:px-12 py-8 max-w-screen-xl mx-auto">
+    <div className="px-4 pt-[64px] md:px-12 py-8 max-w-screen-xl mx-auto">
       <div className="md:mb-48 mb-12">
         <h2 className="text-3xl font-bold text-blue-900 mb-4">
           Our Achievements
@@ -20,7 +20,7 @@ export default function Achievements() {
         </p>
         <button
           className="bg-white text-blue-800 border border-blue-800 px-4 py-2 rounded hover:bg-blue-50 md:mb-12"
-          onClick={() => navigate("/achievementpage")}
+          onClick={() => navigate("/achievements")}
         >
           View All Achievements &gt;
         </button>

@@ -75,27 +75,27 @@ const Footer = ({
           <h3 className="text-lg font-semibold">Quick Links</h3>
           <ul className="mt-2 space-y-1 text-sm">
             <li>
-              <Link to="/playground/about" className="hover:underline">
+              <Link to="/about" className="hover:underline">
                 About us
               </Link>
             </li>
             <li>
-              <Link to="/playground/team" className="hover:underline">
+              <Link to="/team" className="hover:underline">
                 Team
               </Link>
             </li>
             <li>
-              <Link to="/playground/events" className="hover:underline">
+              <Link to="/events" className="hover:underline">
                 Events
               </Link>
             </li>
             <li>
-              <Link to="/playground/achievements" className="hover:underline">
+              <Link to="/achievements" className="hover:underline">
                 Achievements
               </Link>
             </li>
             <li>
-              <Link to="/playground/gallery" className="hover:underline">
+              <Link to="/gallery" className="hover:underline">
                 Gallery
               </Link>
             </li>

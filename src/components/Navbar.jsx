@@ -1,12 +1,27 @@
 import { siteConfig } from "../config/navbarHero";
 import Button from "./shared/Button";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <header className="bg-white w-full px-0 min-[1100px]:sticky fixed top-0 left-0 z-50 ">
+    <header
+      className={`w-full px-0 min-[1100px]:sticky fixed top-0 left-0 z-50 transition-all duration-300 ${
+        scrolled ? "bg-white/80 backdrop-blur-md shadow-md" : "bg-transparent"
+      }`}
+    >
       <div className="max-w-[1920px] w-screen mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-3 flex items-center text-black font-['Helvetica'] font-normal text-[20px] leading-[100%] tracking-[-0.015em]">
         <div className="flex items-center space-x-3 min-[900px]:space-x-6 flex-shrink-0">
           <img
@@ -32,10 +47,19 @@ export default function Navbar() {
         </nav>
 
         <div className="hidden min-[1100px]:flex items-center space-x-4 text-sm flex-shrink-0 ml-auto ">
-          <Button className="border border-black bg-white text-black px-3 py-1.5 text-sm transition duration-300 ease-in-out hover:bg-[rgba(55,115,236,1)] hover:text-white hover:border-none">
+          <Button
+            backgroundColor="white"
+            textColor="black"
+            className="border border-black px-3 py-1.5 text-sm transition duration-300 ease-in-out hover:bg-[rgba(55,115,236,1)] hover:text-white hover:border-none"
+          >
             Join Us
           </Button>
-          <Button className="bg-[rgba(6,25,70,1)] text-white px-3 py-1.5 text-sm transition duration-300 ease-in-out hover:bg-white hover:text-[rgba(6,25,70,1)]">
+
+          <Button
+            backgroundColor="rgba(6,25,70,1)"
+            textColor="white"
+            className="px-3 py-1.5 text-sm transition duration-300 ease-in-out hover:bg-white hover:text-[rgba(6,25,70,1)]"
+          >
             Contact Us
           </Button>
         </div>
@@ -50,7 +74,6 @@ export default function Navbar() {
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
           >
             {mobileMenuOpen ? (
               <path
@@ -83,7 +106,6 @@ export default function Navbar() {
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
-              xmlns="http://www.w3.org/2000/svg"
             >
               <path
                 strokeLinecap="round"
@@ -108,10 +130,19 @@ export default function Navbar() {
           </nav>
 
           <div className="mt-8 flex flex-col space-y-4 pt-6 w-full">
-            <Button className="w-full border border-white bg-transparent text-white px-4 py-3 text-center text-base transition duration-300 hover:bg-white hover:text-[rgba(6,25,70,1)]">
+            <Button
+              backgroundColor="transparent"
+              textColor="white"
+              className="w-full border border-white px-4 py-3 text-center text-base transition duration-300 hover:bg-white hover:text-[rgba(6,25,70,1)]"
+            >
               Join Us
             </Button>
-            <Button className="w-full bg-white text-[rgba(6,25,70,1)] px-4 py-3 text-center text-base transition duration-300 hover:bg-blue-100">
+
+            <Button
+              backgroundColor="white"
+              textColor="rgba(6,25,70,1)"
+              className="w-full px-4 py-3 text-center text-base transition duration-300 hover:bg-blue-100"
+            >
               Contact Us
             </Button>
           </div>
