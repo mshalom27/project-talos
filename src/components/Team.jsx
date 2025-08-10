@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import teamMembers from "../config/teammate";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { FaLinkedin, FaXTwitter } from "react-icons/fa6";
+import { useNavigate } from "react-router";
 
 const TeamSlider = () => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [visibleCount, setVisibleCount] = useState(1);
 
+  const navigate = useNavigate();
   const getVisibleCount = () => {
     if (window.innerWidth < 768) return 1;
     if (window.innerWidth < 1024) return 2;
@@ -31,11 +33,12 @@ const TeamSlider = () => {
 
   const nextSlide = () => {
     const maxIndex = Math.max(0, teamMembers.length - visibleCount);
-    setCurrentIndex((prev) => Math.min(prev + visibleCount, maxIndex));
+    setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + visibleCount));
   };
 
   const prevSlide = () => {
-    setCurrentIndex((prev) => Math.max(prev - visibleCount, 0));
+    const maxIndex = Math.max(0, teamMembers.length - visibleCount);
+    setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - visibleCount));
   };
 
   return (
@@ -44,7 +47,13 @@ const TeamSlider = () => {
         <div className="mb-10">
           <h2 className="text-3xl font-bold mb-2 ml-3">Our team</h2>
           <p className="text-xl text-gray-300 ml-3"></p>
-          <button className="mt-4 border border-white text-white py-2 px-4 ml-3 rounded hover:bg-white hover:text-[#00163A] transition cursor-pointer">
+          <button
+            onClick={() => {
+              navigate("/Team");
+              window.scrollTo(0, 0);
+            }}
+            className="mt-4 border border-white text-white py-2 px-4 ml-3 rounded hover:bg-white hover:text-[#00163A] transition cursor-pointer"
+          >
             View all team members
           </button>
         </div>
