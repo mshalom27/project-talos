@@ -1,5 +1,5 @@
 import TButton from "./shared/TertiaryButton";
-import images from "../config/galary";
+import images from "../config/gallary";
 
 export default function GalarySection() {
   const getRandomImages = () => {
@@ -17,7 +17,9 @@ export default function GalarySection() {
         <p className="text-black-600 mb-6">
           Explore our vibrant moments captured in stunning visuals.
         </p>
-        <TButton>Go to Gallery &gt;</TButton>
+        <a href="/gallery">
+          <TButton>Go to Gallery &gt;</TButton>
+        </a>
       </div>
 
       {/* Gallery Grid */}

@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
-import images from "../../config/galary";
-import heroImages from "../../config/galaryPage";
+import images from "../../config/gallary";
 
 const NavButton = ({ direction, onClick }) => {
   const isNext = direction === "next";
@@ -36,7 +35,7 @@ const YearButton = ({ year, isSelected, onClick }) => (
     onClick={onClick}
     className={`px-4 py-1 rounded-full text-sm md:text-base transition-all ${
       isSelected
-        ? "bg-blue-600 text-white font-medium"
+        ? "bg-[#061946] text-white font-medium"
         : "bg-gray-100 text-gray-700 hover:bg-gray-200"
     }`}
   >
@@ -61,7 +60,7 @@ export default function GallaryPage() {
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+      setCurrentSlide((prev) => (prev + 1) % images.length);
     }, 5000);
     return () => clearInterval(interval);
   }, []);
@@ -79,7 +78,7 @@ export default function GallaryPage() {
       <div className="relative h-[280px] sm:h-[320px] md:h-[400px] lg:h-[480px] w-full overflow-hidden">
         {/* Carousel Slides */}
         <div className="relative h-full w-full">
-          {heroImages.map((image, index) => (
+          {images.map((image, index) => (
             <div
               key={image.id}
               className={`absolute inset-0 transition-opacity duration-1000 ease-in-out ${
@@ -96,7 +95,7 @@ export default function GallaryPage() {
 
           {/* Carousel Controls */}
           <div className="absolute bottom-4 left-0 right-0 z-30 flex justify-center gap-2">
-            {heroImages.map((_, index) => (
+            {images.map((_, index) => (
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
@@ -105,26 +104,6 @@ export default function GallaryPage() {
               />
             ))}
           </div>
-
-          {/* Next/Prev Buttons */}
-          {heroImages.length > 1 && (
-            <>
-              <NavButton
-                direction="prev"
-                onClick={() =>
-                  setCurrentSlide((prev) =>
-                    prev === 0 ? heroImages.length - 1 : prev - 1,
-                  )
-                }
-              />
-              <NavButton
-                direction="next"
-                onClick={() =>
-                  setCurrentSlide((prev) => (prev + 1) % heroImages.length)
-                }
-              />
-            </>
-          )}
         </div>
       </div>
 
