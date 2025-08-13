@@ -1,11 +1,11 @@
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 import achievementsData from "../config/achievement";
 
 export default function Achievements() {
   const navigate = useNavigate();
 
   return (
-    <div className="px-4 md:px-12 py-8 max-w-screen-xl mx-auto">
+    <div className="px-4 pt-32 md:pt-40 md:px-12 py-8 max-w-screen-xl mx-auto">
       <div className="md:mb-48 mb-12">
         <h2 className="text-3xl font-bold text-blue-900 mb-4">
           Our Achievements
@@ -19,8 +19,8 @@ export default function Achievements() {
           solidifying their reputation for excellence in mechanical engineering.
         </p>
         <button
-          className="bg-white text-blue-800 border border-blue-800 px-4 py-2 rounded hover:bg-blue-50 md:mb-12"
-          onClick={() => navigate("/achievementpage")}
+          className="bg-[rgba(6,25,70,1)] text-white border-blue-800 px-4 py-2 rounded hover:bg-blue-50 md:mb-12  hover:text-black"
+          onClick={() => navigate("/achievements")}
         >
           View All Achievements &gt;
         </button>
@@ -31,25 +31,38 @@ export default function Achievements() {
         <div className="md:hidden absolute left-2 top-0 h-full w-1 bg-black z-0"></div>
 
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between relative z-10 md:mb-60">
-          {achievementsData.map((item, index) => (
-            <div
-              key={index}
-              className={`w-full md:w-1/4 px-4 md:mb-0 flex md:flex-col items-start md:items-center relative`}
-            >
-              <div className="absolute md:static left-0 md:left-auto top-2 md:top-auto md:mb-4 transform -translate-y-1/2 md:translate-y-1/2 w-4.5 h-4.5 bg-black border-2 border-white rounded-full z-20"></div>
-
+          {achievementsData
+            .filter((item) => item.id <= 5)
+            .map((item, index) => (
               <div
-                className={`bg-white p-4 rounded-md w-full max-w-xs md:mt-0 md:absolute ${
-                  index % 2 === 0
-                    ? "md:top-1/2 md:translate-y-6 self-start"
-                    : "md:bottom-1/2 md:-translate-y-6 self-end"
-                }`}
+                key={index}
+                className={`w-full md:w-1/4 px-4 md:mb-0 flex md:flex-col items-start md:items-center relative`}
               >
-                <h3 className="font-bold text-lg text-black">{item.title}</h3>
-                <p className="text-sm text-gray-600 mt-2">{item.description}</p>
+                <div className="absolute md:static left-0 md:left-auto top-2 md:top-auto md:mb-4 transform -translate-y-1/2 md:translate-y-1/2 w-4.5 h-4.5 bg-black border-2 border-white rounded-full z-20"></div>
+
+                <div
+                  className={`bg-white p-4 rounded-md w-full max-w-xs md:mt-0 md:absolute ${
+                    index % 2 === 0
+                      ? "md:top-1/2 md:translate-y-6 self-start"
+                      : "md:bottom-1/2 md:-translate-y-6 self-end"
+                  }`}
+                >
+                  <h3 className="font-bold text-lg text-black">{item.year}</h3>
+                  <h4
+                    className="text-sm text-black decoration-4"
+                    style={{ display: "inline" }}
+                  >
+                    {item.title}:{" "}
+                  </h4>
+                  <p
+                    className="text-sm text-gray-700"
+                    style={{ display: "inline" }}
+                  >
+                    {item.description}
+                  </p>
+                </div>
               </div>
-            </div>
-          ))}
+            ))}
         </div>
       </div>
     </div>
