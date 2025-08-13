@@ -38,7 +38,7 @@ const teamMembers = [
   {
     name: "Samidha Behera",
     title: "Sponsorship Head",
-    img: "https://res.cloudinary.com/dm406z4pf/image/upload/v1754119375/samidha_kxwkkb.jpg",
+    img: "https://res.cloudinary.com/dm406z4pf/image/upload/v1755092071/samidha_kxwkkb_952928_da79e7.jpg",
     description: "",
     team: "Executive Body",
     linkedin: "https://www.linkedin.com/in/samidha-behera-09297828a/",

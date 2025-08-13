@@ -82,7 +82,8 @@ const SponsorsSection = () => {
   return (
     <section className="bg-white py-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        <div className="mb-8">
+        {/* CENTERED TITLE SECTION */}
+        <div className="mb-8" style={{ textAlign: "center" }}>
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-2">
             Our Sponsors and Partners
           </h2>
@@ -114,14 +115,22 @@ const SponsorsSection = () => {
                 href={sponsor.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="flex-shrink-0 px-2"
+                className="flex-shrink-0 px-2 sponsor-item"
                 style={{ width: `${100 / itemsToShow}%` }}
               >
-                <div className="h-64 bg-white flex items-center justify-center rounded-xl hover:shadow-xl transition duration-300 border-2 cursor-pointer">
+                <div
+                  className="h-64 bg-white flex items-center justify-center rounded-xl hover:shadow-xl transition duration-300 border-2 cursor-pointer"
+                  style={{
+                    transition: "all 0.3s ease",
+                  }}
+                >
                   <img
                     src={sponsor.image}
                     alt={sponsor.name}
-                    className="object-contain h-32"
+                    className="object-contain h-32 sponsor-image"
+                    style={{
+                      transition: "transform 0.3s ease, filter 0.3s ease",
+                    }}
                   />
                 </div>
               </a>
@@ -136,6 +145,13 @@ const SponsorsSection = () => {
           </button>
         </div>
       </div>
+
+      <style jsx>{`
+        .sponsor-item:hover .sponsor-image {
+          transform: scale(1.05);
+          filter: brightness(1.1);
+        }
+      `}</style>
     </section>
   );
 };
