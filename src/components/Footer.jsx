@@ -46,10 +46,15 @@ const Footer = ({
           </div>
         </div>
 
-        {/* Quick Links Section */}
-        <div className="order-3 md:order-none">
-          <h3 className="text-2xl font-semibold mb-6">Quick Links</h3>
-          <ul className="space-y-3 text-base">
+        {/* Middle Section */}
+        <div>
+          <h3 className="text-lg font-semibold">Quick Links</h3>
+          <ul className="mt-2 space-y-1 text-sm">
+            <li>
+              <Link to="/about" className="hover:underline">
+                About us
+              </Link>
+            </li>
             <li>
               <Link to="/team" className="hover:underline">
                 Team
