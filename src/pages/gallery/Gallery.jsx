@@ -128,10 +128,11 @@ export default function GallaryPage() {
               </div>
             </div>
             <p className="text-black-600 md:max-w-xl text-sm md:text-base">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-              Suspendisse varius enim in eros elementum tristique. Duis cursus,
-              mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam
-              libero vitae erat.
+              Step into our visual storybook — where every image captures a
+              moment, every frame holds a memory, and every detail speaks of the
+              journey we’ve lived and the beauty we’ve created. Welcome to our
+              gallery, a celebration of experiences brought to life through the
+              lens.
             </p>
           </div>
         </div>
