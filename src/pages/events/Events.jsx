@@ -15,9 +15,13 @@ const Events = () => {
             <EventCard key={index} {...event} />
           ))
         ) : (
-          <p className="text-center col-span-full text-gray-500">
-            No events found.
-          </p>
+          <EventCard
+            title="Coming Soon"
+            description="Stay tuned! Exciting future events are on the way."
+            images={[
+              "https://res.cloudinary.com/dswk9scro/image/upload/v1752313324/image_urekzp.png",
+            ]}
+          />
         )}
       </div>
     );
