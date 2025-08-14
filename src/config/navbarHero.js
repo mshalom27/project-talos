@@ -1,6 +1,6 @@
 export const siteConfig = {
   navigation: {
-    logo: "https://res.cloudinary.com/dwjcki9ey/image/upload/v1752133616/Group2_e25wne.png",
+    logo: "https://res.cloudinary.com/dswk9scro/image/upload/v1755092284/ASME_NIT_Rourkela_Student_Section_Blue_ldskye.png",
     links: [
       { name: "Home", href: "/" },
       { name: "Team", href: "/team" },

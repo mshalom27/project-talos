@@ -13,15 +13,15 @@ const Footer = ({
   year = new Date().getFullYear(),
 }) => {
   return (
-    <footer className="bg-[#0B2044] text-white px-4 py-8 sm:px-8 sm:py-10 md:px-12 md:py-12">
+    <footer className="bg-[#0B2044] text-white px-4 pt-4 pb-8 sm:px-8 sm:pt-6 sm:pb-10 md:px-12 md:pt-8 md:pb-12">
       <div className="max-w-7xl mx-auto grid grid-cols-1 gap-10 sm:gap-12 md:grid-cols-3 md:gap-8">
         {/* Logo and Description Section */}
         <div className="order-1 md:order-none">
-          <div className="flex items-center gap-4 mb-6 flex-wrap">
+          <div className="flex items-center gap-4 mb-3 flex-wrap">
             <img
-              src="https://res.cloudinary.com/dswk9scro/image/upload/v1752377324/Group_cropped_qgqzw9.png"
+              src="https://res.cloudinary.com/dswk9scro/image/upload/v1755092506/ASME_NIT_Rourkela_Student_Section_White_T_oe5ox2.png"
               alt="ASME Logo"
-              className="w-12 h-12 object-contain"
+              className="w-24 h-20 object-contain -mt-1"
             />
             <h2 className="text-2xl font-bold">{title}</h2>
           </div>
@@ -47,14 +47,9 @@ const Footer = ({
         </div>
 
         {/* Middle Section */}
-        <div>
-          <h3 className="text-lg font-semibold">Quick Links</h3>
-          <ul className="mt-2 space-y-1 text-sm">
-            <li>
-              <Link to="/about" className="hover:underline">
-                About us
-              </Link>
-            </li>
+        <div className="md:ml-15">
+          <h3 className="text-2xl font-semibold">Quick Links</h3>
+          <ul className="mt-5 space-y-3 text-base">
             <li>
               <Link to="/team" className="hover:underline">
                 Team
@@ -79,12 +74,17 @@ const Footer = ({
         </div>
 
         {/* Contact Info Section */}
-        <div className="order-2 md:order-none">
+        <div className="order-2 md:ml-6">
           <h3 className="text-2xl font-semibold mb-6">Contact Info</h3>
           <div className="text-base space-y-6">
             <div className="flex items-center gap-4">
               <FiMail className="text-[#51B8F2] text-2xl hover:text-white transition" />
-              <span>asme.nitrkl@gmail.com</span>
+              <a
+                href="mailto:asme.nitrkl@gmail.com"
+                className="no-underline hover:underline"
+              >
+                asme.nitrkl@gmail.com
+              </a>
             </div>
             <div className="flex items-center gap-4">
               <FiPhone className="text-[#51B8F2] text-2xl hover:text-white transition" />
@@ -100,9 +100,17 @@ const Footer = ({
           </div>
         </div>
       </div>
-
-      <div className="text-center text-base mt-10 border-t border-white/20 pt-6">
-        © {year} {title}. All rights reserved.
+      <div className="flex flex-col md:flex-row justify-between items-center text-base mt-5 border-t border-white/20 pt-2">
+        <p>
+          © {year} {title}. All rights reserved.
+        </p>
+        <a
+          href="https://opencodenitr.in/"
+          target="_blank"
+          className="hover:underline "
+        >
+          Architected with ♥ by Team OpenCode
+        </a>
       </div>
     </footer>
   );

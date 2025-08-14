@@ -27,7 +27,7 @@ export default function Navbar() {
           <img
             src={siteConfig.navigation.logo}
             alt="Logo"
-            className="h-10 w-auto"
+            className="h-16 w-auto"
           />
         </div>
 
