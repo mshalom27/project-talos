@@ -69,7 +69,9 @@ const TeamSlider = () => {
       <div className="max-w-7xl mx-auto">
         <div className="mb-10">
           <h2 className="text-3xl font-bold mb-2 ml-12">Our team</h2>
-          <p className="text-xl text-gray-300 ml-12"></p>
+          <p className="text-xl text-gray-300 ml-12">
+            Meet Our Amazing Team Members
+          </p>
           <button
             onClick={viewFullTeam}
             className="mt-4 border border-white text-white py-2 px-4 ml-12 rounded hover:bg-white hover:text-[#00163A] transition-all duration-300 cursor-pointer"
@@ -81,13 +83,13 @@ const TeamSlider = () => {
         <div className="relative">
           <button
             onClick={showPreviousMembers}
-            className="absolute -left-4 top-1/3 -translate-y-1/2 z-10 p-2 border-2 rounded-full bg-white border-gray-300 shadow-lg hover:bg-gray-100 cursor-pointer transition-all duration-200"
+            className="absolute left-0 top-1/3 -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow hover:shadow-lg hover:scale-110 cursor-pointer transition-all duration-200"
             aria-label="View previous team members"
           >
             <ArrowLeft className="w-6 h-6" color="#00163A" />
           </button>
 
-          <div className="overflow-hidden px-12">
+          <div className="overflow-hidden mx-12">
             <div
               className="flex transition-transform duration-700 ease-in-out"
               style={{
@@ -105,7 +107,7 @@ const TeamSlider = () => {
                       <img
                         src={teamMember.img}
                         alt={`${teamMember.name} - ${teamMember.title}`}
-                        className="w-full aspect-[5/6] object-top object-cover rounded-lg hover:scale-105 transition-transform duration-300"
+                        className="w-full h-72 object-cover rounded-lg hover:scale-105 transition-transform duration-300"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
                     </div>
@@ -157,7 +159,7 @@ const TeamSlider = () => {
 
           <button
             onClick={showNextMembers}
-            className="absolute -right-4 top-1/3 -translate-y-1/2 z-10 p-2 border-2 rounded-full bg-white border-gray-300 shadow-lg hover:bg-gray-100 cursor-pointer transition-all duration-200"
+            className="absolute right-0 top-1/3 -translate-y-1/2 z-10 bg-white rounded-full p-2 shadow hover:shadow-lg hover:scale-110 cursor-pointer transition-all duration-200"
             aria-label="View next team members"
           >
             <ArrowRight className="w-6 h-6" color="#00163A" />
