@@ -33,7 +33,7 @@ const Timeline = () => {
         <div className="relative" ref={timelineRef}>
           <div className="grid grid-cols-9 gap-2">
             {achievementsData
-              .sort((a, b) => parseInt(a.year) - parseInt(b.year))
+              .sort((a, b) => parseInt(b.year) - parseInt(a.year))
               .map((achievement, index) => (
                 <div key={achievement.id} className="contents">
                   {/* Left card */}
