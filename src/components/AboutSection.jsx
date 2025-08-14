@@ -3,7 +3,10 @@ import { siteConfig } from "../config/navbarHero";
 
 export default function AboutSection() {
   return (
-    <section className="bg-white px-4 sm:px-6 md:px-10 lg:px-16 py-12 sm:py-16">
+    <section
+      id="about"
+      className="bg-white px-4 sm:px-6 md:px-10 lg:px-16 py-12 sm:py-16"
+    >
       <div className="w-full max-w-[1600px] mx-auto flex flex-col md:flex-row items-center justify-between gap-y-10 gap-x-10 xl:gap-x-12 2xl:gap-x-14">
         <div className="w-full max-w-[500px] px-2 md:px-0 mt-10 md:mt-0">
           <img
@@ -29,12 +32,15 @@ export default function AboutSection() {
           </p>
 
           <div className="flex flex-col sm:flex-row sm:justify-center md:justify-start items-center mt-6 gap-4">
-            <Button
-              className="bg-white text-blue-600 px-10 shadow-lg py-2 rounded-md border border-black transition duration-300 ease-in-out hover:bg-[rgba(6,25,70,1)] hover:text-white"
+            <a
+              href="#cards"
+              role="button"
+              tabIndex={0}
+              className=" text-2xl h-12 justify-center items-center flex bg-[rgba(6,25,70,1)] text-[#ccc0c0] underline-offset-4 transition duration-300 ease-in-out hover:bg-none hover:bg-white hover:text-[#061946] font-semibold py-2 px-4 rounded"
               style={{ fontFamily: "Helvetica, Arial, sans-serif" }}
             >
               {siteConfig.about.button}
-            </Button>
+            </a>
           </div>
         </div>
       </div>
