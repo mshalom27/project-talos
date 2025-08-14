@@ -5,12 +5,12 @@ export default function Achievements() {
   const navigate = useNavigate();
 
   return (
-    <div className="px-4 pt-32 md:pt-40 md:px-12 py-8 max-w-screen-xl mx-auto">
-      <div className="md:mb-48 mb-12">
-        <h2 className="text-3xl font-bold text-blue-900 mb-4">
+    <div className="px-4 md:px-12 py-10 max-w-screen-xl mx-auto">
+      <div style={{ marginBottom: "12rem" }}>
+        <h2 className="text-3xl font-bold text-[#0B2044] mb-4">
           Our Achievements
         </h2>
-        <p className="text-gray-700 mb-6 max-w-3xl">
+        <p className="text-gray-700 mb-6 max-w-3xl text-lg">
           ASME NIT Rourkela excels in fostering innovation and leadership
           through workshops, competitions, and expert lectures. Recognized for
           achievements in events like the Student Design Challenge and HPVC, the
@@ -19,10 +19,10 @@ export default function Achievements() {
           solidifying their reputation for excellence in mechanical engineering.
         </p>
         <button
-          className="bg-[rgba(6,25,70,1)] text-white border-blue-800 px-4 py-2 rounded hover:bg-blue-50 md:mb-12  hover:text-black"
+          className="bg-slate-900 text-white border border-slate-900 px-4 py-2 rounded hover:bg-white hover:text-slate-900 md:mb-12"
           onClick={() => navigate("/achievements")}
         >
-          View All Achievements &gt;
+          View all Achievements
         </button>
       </div>
 
