@@ -14,7 +14,7 @@ export const siteConfig = {
     title: "We are",
     subtitle: "ASME NIT ROURKELA",
     description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitaeistique. Duis cursus, mi quis viverra ornare, eros dolor interdum nulla, ut commodo diam libero vitae erat.",
+      "The ASME (American Society of Mechanical Engineers) NIT Rourkela Student Section is an official technical society under the Student Activity Centre (SAC) of NIT Rourkela. It serves as a vibrant platform for undergraduate students to enhance both technical and professional capabilities, preparing them for future industrial and corporate roles while aiming to bring laurels to the institute.",
     primaryButton: "Join Us",
     secondaryLink: "Learn More",
     image:

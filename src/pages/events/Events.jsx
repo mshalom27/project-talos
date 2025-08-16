@@ -28,7 +28,7 @@ const Events = () => {
   };
 
   return (
-    <div className="px-4 md:px-12 py-8">
+    <div className="px-8 md:px-12 py-8 mt-12">
       <div className="text-center">
         <h2 className="text-3xl font-bold text-[#0B2044]">
           Our Organised Events
