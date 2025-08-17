@@ -98,4 +98,8 @@ const achievementsData = [
   },
 ];
 
+export const achivementTop = {
+  link: "https://res.cloudinary.com/dsjxx976j/image/upload/v1755452142/DSC00743_sw9grt.jpg",
+};
+
 export default achievementsData;

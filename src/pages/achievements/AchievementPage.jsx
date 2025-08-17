@@ -1,5 +1,5 @@
 import Timeline from "../../components/Timeline";
-import achievementImg from "../../assets/achievementimg.jpg";
+import { achivementTop } from "../../config/achievement";
 
 const AchievementPage = () => {
   return (
@@ -9,7 +9,7 @@ const AchievementPage = () => {
         <div
           className="absolute inset-0 bg-cover bg-no-repeat"
           style={{
-            backgroundImage: `url(${achievementImg})`,
+            backgroundImage: `url(${achivementTop.link})`,
             backgroundPosition: "center 90%",
           }}
         ></div>

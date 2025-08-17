@@ -4,7 +4,7 @@ import { FiMail, FiPhone } from "react-icons/fi";
 import { GoLocation } from "react-icons/go";
 
 const Footer = ({
-  title = "ASME NIT Rourkela Chapter",
+  title = "ASME NIT Rourkela Student Section",
   description = "The American Society of Mechanical Engineers Student Chapter at NIT Rourkela, fostering a culture of innovation and technical learning through innovation, collaboration, and hands-on learning.",
   social = {
     instagram: "https://www.instagram.com/asme.nitrkl/",
