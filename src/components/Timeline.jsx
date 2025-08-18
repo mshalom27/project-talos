@@ -11,7 +11,19 @@ const Timeline = () => {
   const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    // Scroll progress for timeline line animation
+    // Check if it's mobile
+    const isMobile = window.innerWidth < 768;
+
+    if (isMobile) {
+      // On mobile, make everything visible immediately without animations
+      const allIndices = achievementsData.map((_, index) => index);
+      setVisibleDots(new Set(allIndices));
+      setVisibleLines(new Set(allIndices));
+      setScrollProgress(1);
+      return; // Exit early for mobile
+    }
+
+    // Desktop scroll animations
     const handleScroll = () => {
       if (containerRef.current) {
         const container = containerRef.current;
@@ -47,11 +59,11 @@ const Timeline = () => {
               entry.target.getAttribute("data-timeline-index") || "0",
             );
 
-            // Add staggered effect
+            // Add minimal staggered effect
             setTimeout(() => {
               setVisibleDots((prev) => new Set([...prev, index]));
               setVisibleLines((prev) => new Set([...prev, index]));
-            }, index * 200);
+            }, index * 50);
           }
         });
       },
@@ -147,6 +159,9 @@ const Timeline = () => {
               }}
             />
 
+            {/* Mobile Timeline Line - Continuous */}
+            <div className="md:hidden absolute left-6 top-0 w-0.5 h-full bg-gradient-to-b from-[#0B2044] to-[#51B8F2] rounded-full z-0" />
+
             {/* Timeline Items */}
             <div className="space-y-16 md:space-y-20">
               {achievementsData
@@ -218,7 +233,7 @@ const Timeline = () => {
 
                             {/* Year Badge */}
                             <div
-                              className={`absolute -bottom-10 left-1/2 transform -translate-x-1/2 bg-white text-[#0B2044] text-xs font-bold px-3 py-1 rounded-full shadow-md border border-gray-100 transition-all duration-500 ${
+                              className={`absolute -bottom-10 left-1/2 transform -translate-x-1/2 bg-white text-[#0B2044] text-xs font-bold px-3 py-1 rounded-full shadow-md border border-gray-100 transition-all duration-200 ${
                                 visibleDots.has(index)
                                   ? "opacity-100 translate-y-0"
                                   : "opacity-0 translate-y-4"
@@ -248,24 +263,9 @@ const Timeline = () => {
 
                     {/* Mobile Layout */}
                     <div className="md:hidden relative pl-8">
-                      {/* Mobile Timeline Line */}
-                      <div className="absolute left-4 top-0 w-0.5 h-full bg-gray-200 rounded-full" />
-                      <div
-                        className="absolute left-4 top-0 w-0.5 bg-gradient-to-b from-[#0B2044] to-[#51B8F2] rounded-full transition-all duration-1000"
-                        style={{
-                          height: visibleDots.has(index) ? "100%" : "0%",
-                        }}
-                      />
-
-                      {/* Mobile Dot */}
-                      <div className="absolute left-2 top-6 z-20">
-                        <div
-                          className={`w-4 h-4 rounded-full border-2 border-white shadow-md transition-all duration-500 ${
-                            visibleDots.has(index)
-                              ? "bg-gradient-to-br from-[#0B2044] to-[#51B8F2] scale-110"
-                              : "bg-gray-300 scale-75"
-                          }`}
-                        />
+                      {/* Mobile Dot - Static, no animation */}
+                      <div className="absolute left-6 top-6 z-20 transform -translate-x-1/2">
+                        <div className="w-4 h-4 rounded-full border-2 border-white shadow-md bg-gradient-to-br from-[#0B2044] to-[#51B8F2]" />
                       </div>
 
                       {/* Mobile Card */}
