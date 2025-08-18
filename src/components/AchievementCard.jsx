@@ -6,6 +6,16 @@ const AchievementCard = ({ title, description, year, isLeft, index }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   useEffect(() => {
+    // Check if it's mobile
+    const isMobile = window.innerWidth < 768;
+
+    if (isMobile) {
+      // On mobile, make cards visible immediately without animations
+      setIsVisible(true);
+      return;
+    }
+
+    // Desktop animations
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
