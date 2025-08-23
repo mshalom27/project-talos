@@ -44,6 +44,15 @@ const TeamPage = () => {
       </div>
 
       <div className="max-w-4xl mx-auto text-lg font-bold mb-6">
+        {activeTeam === "Executive Body" && (
+          <p className="text-center text-gray-600">
+            The Executive Body is the core leadership team of the ASME Student
+            Section, responsible for planning, organizing, and executing all
+            technical, professional, and outreach activities. It ensures
+            coordination among members, represents the section, and drives
+            initiatives that promote engineering knowledge and collaboration.
+          </p>
+        )}
         {activeTeam === "Team Bluestreak" && (
           <p className="text-center text-gray-600">
             Bluestreak, a team within ASME at NIT Rourkela, is a dedicated team
@@ -112,14 +121,6 @@ const TeamPage = () => {
                       className="text-black hover:text-blue-700"
                     >
                       <FaLinkedin size={18} />
-                    </a>
-                    <a
-                      href={member.twitter || "#"}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-black hover:text-blue-500"
-                    >
-                      <FaXTwitter size={18} />
                     </a>
                   </div>
                 </div>

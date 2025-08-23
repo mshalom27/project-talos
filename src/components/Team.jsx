@@ -7,6 +7,7 @@ import { useNavigate } from "react-router";
 const TeamSlider = () => {
   const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
   const [cardsPerView, setCardsPerView] = useState(1);
+  const [activeTeam, setActiveTeam] = useState("All");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -34,7 +35,20 @@ const TeamSlider = () => {
     new Map(teamMembers.map((member) => [member.name, member])).values(),
   );
 
-  const maxSlideIndex = Math.max(0, uniqueTeamMembers.length - cardsPerView);
+  const teams = [
+    "All",
+    "Executive Body",
+    "Team Bluebird",
+    "Team Bluestreak",
+    "Team Blueprint",
+  ];
+
+  const filteredTeamMembers =
+    activeTeam === "All"
+      ? uniqueTeamMembers
+      : uniqueTeamMembers.filter((member) => member.team === activeTeam);
+
+  const maxSlideIndex = Math.max(0, filteredTeamMembers.length - cardsPerView);
 
   const showNextMembers = () => {
     setCurrentSlideIndex((currentIndex) => {
@@ -72,6 +86,24 @@ const TeamSlider = () => {
           <p className="text-xl text-gray-300 ml-12">
             Meet Our Amazing Team Members
           </p>
+
+          {/* Team Filter Buttons */}
+          <div className="flex justify-start flex-wrap gap-4 mt-6 mb-6 ml-12">
+            {teams.map((team) => (
+              <button
+                key={team}
+                onClick={() => setActiveTeam(team)}
+                className={`px-4 py-2 rounded-full border text-lg font-medium transition cursor-pointer hover:bg-white hover:text-[#00163A] ${
+                  activeTeam === team
+                    ? "bg-white text-[#00163A]"
+                    : "bg-transparent text-white border-white"
+                }`}
+              >
+                {team}
+              </button>
+            ))}
+          </div>
+
           <button
             onClick={viewFullTeam}
             className="mt-4 border border-white text-white py-2 px-4 ml-12 rounded hover:bg-white hover:text-[#00163A] transition-all duration-300 cursor-pointer"
@@ -96,7 +128,7 @@ const TeamSlider = () => {
                 transform: `translateX(-${currentSlideIndex * (100 / cardsPerView)}%)`,
               }}
             >
-              {uniqueTeamMembers.map((teamMember, memberIndex) => (
+              {filteredTeamMembers.map((teamMember, memberIndex) => (
                 <div
                   key={`team-member-${memberIndex}`}
                   className="flex-shrink-0 px-2"
