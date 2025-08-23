@@ -82,13 +82,13 @@ const SponsorsSection = () => {
   return (
     <section className="bg-white py-10">
       <div className="max-w-6xl mx-auto px-4 sm:px-6">
-        {/* CENTERED TITLE SECTION */}
         <div className="mb-8" style={{ textAlign: "center" }}>
           <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 mb-2">
             Our Sponsors and Partners
           </h2>
           <p className="text-gray-700 text-lg">
-            We are proudly supported by our amazing sponsors and partners.
+            Proudly powered by the support of our incredible sponsors and
+            partners through the years.
           </p>
         </div>
 
