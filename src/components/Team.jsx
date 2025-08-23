@@ -82,18 +82,18 @@ const TeamSlider = () => {
     <section className="bg-[#00163A] text-white px-4 sm:px-6 py-16">
       <div className="max-w-7xl mx-auto">
         <div className="mb-10">
-          <h2 className="text-3xl font-bold mb-2 ml-12">Our team</h2>
-          <p className="text-xl text-gray-300 ml-12">
+          <h2 className="text-3xl font-bold mb-2 ml-4 sm:ml-12">Our team</h2>
+          <p className="text-xl text-gray-300 ml-4 sm:ml-12">
             Meet Our Amazing Team Members
           </p>
 
           {/* Team Filter Buttons */}
-          <div className="flex justify-start flex-wrap gap-4 mt-6 mb-6 ml-12">
+          <div className="flex justify-start flex-wrap gap-2 sm:gap-4 mt-6 mb-6 ml-4 sm:ml-12">
             {teams.map((team) => (
               <button
                 key={team}
                 onClick={() => setActiveTeam(team)}
-                className={`px-4 py-2 rounded-full border text-lg font-medium transition cursor-pointer hover:bg-white hover:text-[#00163A] ${
+                className={`px-2 py-1 sm:px-4 sm:py-2 rounded-full border text-sm sm:text-lg font-medium transition cursor-pointer hover:bg-white hover:text-[#00163A] ${
                   activeTeam === team
                     ? "bg-white text-[#00163A]"
                     : "bg-transparent text-white border-white"
@@ -106,7 +106,7 @@ const TeamSlider = () => {
 
           <button
             onClick={viewFullTeam}
-            className="mt-4 border border-white text-white py-2 px-4 ml-12 rounded hover:bg-white hover:text-[#00163A] transition-all duration-300 cursor-pointer"
+            className="mt-4 border border-white text-white py-2 px-4 ml-4 sm:ml-12 rounded hover:bg-white hover:text-[#00163A] transition-all duration-300 cursor-pointer"
           >
             View all team members
           </button>
@@ -199,12 +199,14 @@ const TeamSlider = () => {
         </div>
 
         <div className="mt-16">
-          <h3 className="text-xl font-bold mb-1 ml-12">Join Us Today!</h3>
-          <p className="text-base text-gray-300 mb-3 ml-12">
+          <h3 className="text-xl font-bold mb-1 ml-4 sm:ml-12">
+            Join Us Today!
+          </h3>
+          <p className="text-base text-gray-300 mb-3 ml-4 sm:ml-12">
             Ready to be part of our amazing team? We're always looking for
             talented individuals who share our passion.
           </p>
-          <button className="border border-white text-white py-2 px-4 ml-12 rounded hover:bg-white hover:text-[#00163A] transition-all duration-300 cursor-pointer">
+          <button className="border border-white text-white py-2 px-4 ml-4 sm:ml-12 rounded hover:bg-white hover:text-[#00163A] transition-all duration-300 cursor-pointer">
             Apply here
           </button>
         </div>
