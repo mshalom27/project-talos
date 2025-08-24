@@ -17,6 +17,18 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Handle body overflow when mobile menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [mobileMenuOpen]);
+
   const handleJoinUsClick = () => {
     navigate("/applications");
   };
@@ -30,11 +42,11 @@ export default function Navbar() {
 
   return (
     <header
-      className={`w-full px-0 min-[1100px]:sticky fixed top-0 left-0 z-50 transition-all duration-300 ${
+      className={`w-full fixed top-0 left-0 z-50 transition-all duration-300 ${
         scrolled ? "bg-white/80 backdrop-blur-md shadow-md" : "bg-transparent"
       }`}
     >
-      <div className="max-w-[1920px] w-screen mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-3 flex items-center text-black font-['Helvetica'] font-normal text-[20px] leading-[100%] tracking-[-0.015em]">
+      <div className="w-full max-w-[1920px] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 py-3 flex items-center text-black font-['Helvetica'] font-normal text-[20px] leading-[100%] tracking-[-0.015em]">
         <div className="flex items-center space-x-3 min-[900px]:space-x-6 flex-shrink-0">
           <img
             src={siteConfig.navigation.logo}
@@ -44,7 +56,7 @@ export default function Navbar() {
         </div>
 
         <nav
-          className="hidden min-[1100px]:flex absolute left-1/2 transform -translate-x-1/2 justify-center space-x-6"
+          className="hidden min-[1100px]:flex absolute left-1/2 transform -translate-x-1/2 justify-center space-x-6 bg-white/80 px-6 py-2 rounded-md"
           style={{ letterSpacing: "-1.5%" }}
         >
           {siteConfig.navigation.links.map((item) => (
@@ -58,7 +70,7 @@ export default function Navbar() {
           ))}
         </nav>
 
-        <div className="hidden min-[1100px]:flex items-center space-x-4 text-sm flex-shrink-0 ml-auto ">
+        <div className="hidden min-[1100px]:flex items-center space-x-4 text-sm flex-shrink-0 ml-auto">
           <Button
             backgroundColor="white"
             textColor="black"
@@ -89,84 +101,87 @@ export default function Navbar() {
             stroke="currentColor"
             viewBox="0 0 24 24"
           >
-            {!mobileMenuOpen ? (
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 6h16M4 12h16M4 18h16"
-              />
-            ) : null}
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d={
+                mobileMenuOpen
+                  ? "M6 18L18 6M6 6l12 12"
+                  : "M4 6h16M4 12h16M4 18h16"
+              }
+            />
           </svg>
         </button>
       </div>
 
       <div
-        className={`min-[1100px]:hidden fixed inset-0 px-6 py-6 z-40 overflow-auto text-white bg-[#173477ec] transition-all duration-500 ease-in-out
-          ${
-            mobileMenuOpen
-              ? "opacity-100 translate-y-0 pointer-events-auto"
-              : "opacity-0 -translate-y-8 pointer-events-none"
-          }`}
+        className={`min-[1100px] fixed top-0 left-0 w-full h-full z-40 text-white bg-[#203567b4] transition-all duration-500 ease-in-out ${
+          mobileMenuOpen
+            ? "opacity-100 translate-y-0 pointer-events-auto"
+            : "opacity-0 -translate-y-full pointer-events-none"
+        }`}
         style={{ willChange: "opacity, transform" }}
       >
-        <button
-          className="absolute top-6 right-6 text-white"
-          onClick={() => setMobileMenuOpen(false)}
-          aria-label="Close menu"
-        >
-          <svg
-            className="w-8 h-8"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
+        <div className="bg-[#203567cf] p-32 ">
+          <button
+            className="absolute top-6 right-6 text-white"
+            onClick={() => setMobileMenuOpen(false)}
+            aria-label="Close menu"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M6 18L18 6M6 6l12 12"
-            />
-          </svg>
-        </button>
-
-        <nav className="mt-14 flex flex-col w-full">
-          {siteConfig.navigation.links.map((item) => (
-            <a
-              key={item.name}
-              href={item.href}
-              className="w-full py-4 text-lg font-semibold text-center text-white hover:text-blue-300 transition-colors"
-              onClick={() => setMobileMenuOpen(false)}
+            <svg
+              className="w-8 h-8"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
             >
-              {item.name}
-            </a>
-          ))}
-        </nav>
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M6 18L18 6M6 6l12 12"
+              />
+            </svg>
+          </button>
 
-        <div className="mt-8 flex flex-col space-y-4 pt-6 w-full">
-          <Button
-            backgroundColor="transparent"
-            textColor="white"
-            className="w-full border border-white px-4 py-3 text-center text-base transition duration-300 hover:bg-white hover:text-[rgba(6,25,70,1)]"
-            onClick={() => {
-              handleJoinUsClick();
-              setMobileMenuOpen(false);
-            }}
-          >
-            Join Us
-          </Button>
+          <nav className="  0 mt-20 flex flex-col w-full px-4">
+            {siteConfig.navigation.links.map((item) => (
+              <a
+                key={item.name}
+                href={item.href}
+                className="w-full py-4 text-lg font-semibold text-center text-white hover:text-blue-300 transition-colors"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item.name}
+              </a>
+            ))}
+          </nav>
 
-          <Button
-            backgroundColor="white"
-            textColor="rgba(6,25,70,1)"
-            className="w-full px-4 py-3 text-center text-base transition duration-300 hover:bg-blue-100"
-            onClick={() => {
-              handleContactUsClick();
-              setMobileMenuOpen(false);
-            }}
-          >
-            Contact Us
-          </Button>
+          <div className="   mt-8 flex flex-col space-y-4 pt-6 w-full px-4">
+            <Button
+              backgroundColor="transparent"
+              textColor="white"
+              className="w-full border border-white px-4 py-3 text-center text-base transition duration-300 hover:bg-white hover:text-[rgba(6,25,70,1)]"
+              onClick={() => {
+                handleJoinUsClick();
+                setMobileMenuOpen(false);
+              }}
+            >
+              Join Us
+            </Button>
+
+            <Button
+              backgroundColor="white"
+              textColor="rgba(6,25,70,1)"
+              className="w-full px-4 py-3 text-center text-base transition duration-300 hover:bg-blue-100"
+              onClick={() => {
+                handleContactUsClick();
+                setMobileMenuOpen(false);
+              }}
+            >
+              Contact Us
+            </Button>
+          </div>
         </div>
       </div>
     </header>
