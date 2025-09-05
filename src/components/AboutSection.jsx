@@ -15,11 +15,11 @@ export default function AboutSection() {
       className="bg-white px-4 sm:px-6 md:px-10 lg:px-16 py-12 sm:py-16"
     >
       <div className="w-full max-w-[1600px] mx-auto flex flex-col md:flex-row items-start md:items-center justify-between gap-x-10 xl:gap-x-12 2xl:gap-x-14">
-        <div className="w-full relative flex justify-center items-center h-[400px] md:h-[500px]">
+        <div className="w-full px-4 relative flex justify-center items-center  h-[300px] sm:h-[350px] md:h-[500px]">
           <img
             src={siteConfig.about.image}
             alt="About image 1"
-            className="block md:hidden rounded-md shadow-lg object-cover w-full h-full"
+            className="block md:hidden  mb-10 rounded-md shadow-lg object-cover w-full h-full"
           />
 
           <img

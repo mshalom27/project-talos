@@ -11,7 +11,7 @@ export default function HeroSection() {
   }, []);
 
   return (
-    <section className="bg-white min-h-[400px] pt-[80px] sm:pt-[100px] md:pt-[120px] lg:pt-[130px] px-4 sm:px-6 md:px-10 lg:px-16 py-12 sm:py-16">
+    <section className="bg-white min-h-[400px] pt-[40px] sm:pt-[30px] md:pt-[80px] lg:pt-[130px] px-4 sm:px-6 md:px-10 lg:px-16 py-12 sm:py-8">
       <div className="max-w-[1600px] mx-auto flex flex-col md:flex-row items-center md:items-start justify-center md:justify-between md:gap-x-12">
         <div className="w-full max-w-[700px] px-2 md:px-0 space-y-4 text-center md:text-left">
           <p
@@ -51,8 +51,8 @@ export default function HeroSection() {
           </div>
         </div>
 
-        <div className="w-full max-w-[1600px] px-2 md:px-0 relative h-[400px] md:h-[500px] flex justify-center items-center">
-          <div className="w-full max-w-[1600px] px-2 md:px-0 relative flex justify-center items-center h-[300px] sm:h-[350px] md:h-[500px]">
+        <div className="w-full max-w-[1600px] px-2 md:px-0 relative h-[350px] md:h-[500px] flex justify-center items-center">
+          <div className="w-full max-w-[1600px] mt-0 px-2 md:px-0 relative flex justify-center items-center h-[300px] sm:h-[350px] md:h-[500px]">
             <img
               src={siteConfig.hero.image}
               alt="Hero image 1"
@@ -84,14 +84,14 @@ export default function HeroSection() {
               width: "705px",
               height: "705px",
               top: "-234px",
-              left: "-151px",
+              left: "-800px",
               opacity: 0.36,
             }}
           />
           <img
             src={siteConfig.hero.image2}
             alt="Background figure 2"
-            className="absolute hidden min-[980px]:block"
+            className="absolute hidden min-[1800px]:block"
             style={{
               width: "478px",
               height: "478px",
